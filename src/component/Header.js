@@ -10,8 +10,8 @@ export default function Header() {
     // console.warn(ShowName.concat);
 
     // function LogoutHandler() {
-        
-        
+
+
     //     navigate('/SingUP')
     // }
     return (
@@ -427,11 +427,9 @@ export default function Header() {
                                                                     <Link to="/Add Staff">Add Staff</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Delete Staff">Delete Staff</Link>
+                                                                    <Link to="/Delete Staff">Total Staff</Link>
                                                                 </li>
-                                                                <li>
-                                                                    <Link to="/STaff Filter">Show Staff by Filter</Link>
-                                                                </li>
+
                                                                 <li>
                                                                     <Link to="/Staff Votes">Retting Staff</Link>
                                                                 </li>

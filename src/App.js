@@ -7,11 +7,13 @@ import Login from './login-singUP/login';
 import React from 'react';
 import { PrivateComponent } from './PrivateCompo/PrivateComponent';
 import $ from "jquery";
+import Add_servise from './component/Add_Staff/Add_Servise';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Add_Staff } from './component/Add_Staff/Add-staff';
 function App() {
   return (
+
     <div>
 
       <Routes>
@@ -34,7 +36,7 @@ function App() {
 
           {/* Manage Staff Button */}
           <Route path='/Add Staff' element={<Add_Staff />} />
-          <Route path='/Delete Staff' element={<h1> Walcome to Delete Staff</h1>} />
+          <Route path='/Delete Staff' element={<Add_servise/>} />
           <Route path='/STaff Filter' element={<h1> Walcome to Sales Staff</h1>} />
           <Route path='/Staff Votes' element={<h1> Walcome to VIsite Staff Ratting</h1>} />
           {/* Manage Booking Button */}
