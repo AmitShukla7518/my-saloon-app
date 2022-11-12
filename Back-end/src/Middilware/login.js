@@ -30,8 +30,8 @@ const Login = async (req, res, next) => {
                 })
             }
             else {
-                console.log(" Password Incorrect")
-                res.send({ message: "Password Incorrect" })
+                console.log(" Password Incorrect");
+                res.send({ message: "Password Incorrect" });
             }
         }
     })

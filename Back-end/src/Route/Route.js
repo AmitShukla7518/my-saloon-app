@@ -10,8 +10,8 @@ const Middilware = require("../Middilware/login")
 app.use(bodyParser.json());
 
 
-router.post('/SignUP', controller.SignUP)
-router.post('/Login', Middilware.Login)
+router.post('/SignUP', controller.SignUP);
+router.post('/Login', Middilware.Login);
 
 // Staff Routes 
 

@@ -20,14 +20,29 @@ const SignUP = async (req, res, next) => {
         if (err) throw err;
         console.log(result);
         jwt.sign({ result }, token, { expiresIn: '3600s' }, function (err, token) {
-          //  res.send("Token : " + token);
-          res.send({result,auth:token});
+            //  res.send("Token : " + token);
+            res.send({ result, auth: token });
         });
 
     });
 
 }
-
 module.exports = {
     SignUP
 }
+
+
+
+
+/* {
+    "FirstName": "Amit",
+    "LastName": "Shukla",
+    "Gender": "Male",
+    "DOB": "2001/09/2001",
+    "BooldGRP":"O+",
+    "MobileNo": "7518176661",
+    "Pan_Adhar": "123412341234",
+    "Address":"Gorakhpur",
+    "Email": "kumaramitshukla@gmail.com",
+    "Password": "Amit@1234"
+} */
