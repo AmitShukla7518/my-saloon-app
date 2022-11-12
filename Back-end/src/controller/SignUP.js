@@ -15,7 +15,7 @@ const SignUP = async (req, res, next) => {
         Email: req.body.Email,
         Password: value
     }
-    var sql = "INSERT INTO tbl_SignUp SET ?"
+    var sql = "INSERT INTO tbl_SignUp SET = ?"
     con.query(sql, Data, function (err, result) {
         if (err) throw err;
         console.log(result);

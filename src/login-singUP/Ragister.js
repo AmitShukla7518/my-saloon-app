@@ -47,8 +47,6 @@ export default function Ragister() {
         setMobile(Data)
 
     }
-
-
     function EmailHAndler(e) {
         let Data = e.target.value;
         if (!isValidEmail(Data)) {
@@ -68,7 +66,6 @@ export default function Ragister() {
         }
         setPassword(Data)
     }
-
     function CNFRMPasswordHandler(e) {
         let Data = e.target.value;
         if (Data !== Password) {
@@ -143,7 +140,7 @@ export default function Ragister() {
 
                             <div className="form-group">
                                 <label>Email address</label>
-                                <input type="email" className="form-control" placeholder="Email" onChange={EmailHAndler} required/>
+                                <input type="email" className="form-control" placeholder="Email" onChange={EmailHAndler} required />
                                 {EmailError ? <span style={{ color: 'red' }}>Please Enter valid Mail </span> : ""}
                             </div>
                             <div className="form-group">

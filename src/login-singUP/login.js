@@ -1,22 +1,15 @@
 import { useState } from "react";
 import { useNavigate, Link } from 'react-router-dom'
-
-
-
 import Header from "../component/Header";
-
 import Footer from "../component/footer";
 import RYTCOntent from '../component/RYTContent';
-import {PrivateComponent} from '../PrivateCompo/PrivateComponent';
+import { PrivateComponent } from '../PrivateCompo/PrivateComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
 export default function Login() {
     let [Email, setEmail] = useState(" ")
     let [EmailError, setEmailError] = useState(false)
     let [Password, setPassword] = useState(" ")
     const navigate = useNavigate();
-
-
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
@@ -46,13 +39,11 @@ export default function Login() {
             });
             result = await result.json();
             console.log(result.Name);
-
             if (result.UserType == "Admin" && result.auth && result.Status == "Active") {
                 localStorage.setItem('Admin', JSON.stringify(result.UserType));
                 localStorage.setItem('Admin_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));
                 console.warn(result.Name);
-
                 navigate("/")
 
             } else if (result.UserType == "user") {
@@ -63,7 +54,6 @@ export default function Login() {
             }
             else {
                 alert("invalid Email or Password")
-
             }
         }
     }

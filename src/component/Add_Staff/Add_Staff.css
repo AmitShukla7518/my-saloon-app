@@ -3,7 +3,27 @@
     line-height: 2.15;
     padding-left: .75em;
     padding-right: .75em;
-    }
-    .card-registration .select-arrow {
+}
+
+.card-registration .select-arrow {
     top: 13px;
-    }
+}
+
+.label2 {
+    display: inline-block;
+    margin-bottom: 0.3in;
+    margin-left: 1in;
+
+}
+
+
+.boxes {
+
+    
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 1.5in;
+    height: 0.3in;
+
+}
+

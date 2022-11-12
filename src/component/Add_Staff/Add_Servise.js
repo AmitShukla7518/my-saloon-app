@@ -38,7 +38,7 @@ export default function Add_servise() {
                                     <option value="nailCare">Nail Care</option>
                                     <option value="eyeCare">Eye Care</option>
                                     <option value="waxing">Waxing</option>
-                                    <option value="makeup">Make-Up</option>
+                                    
                                 </select>
                             </div>
 

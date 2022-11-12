@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const jwttoken = "SPASaloon"
 const Login = async (req, res, next) => {
     let { Email, Password } = req.body
-    var sql = 'SELECT * FROM tbl_AddStaff WHERE Email = ?';
+    var sql = 'SELECT * FROM tbl_SignUp WHERE Email = ?';
     let EmailData = con.query(sql, Email, async function (err, result) {
         if (err) throw err;
         if (result == 0) {
