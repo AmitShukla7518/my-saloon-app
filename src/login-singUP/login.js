@@ -39,14 +39,14 @@ export default function Login() {
             });
             result = await result.json();
             console.log(result.Name);
-            if (result.UserType == "Admin" && result.auth && result.Status == "Active") {
+            if (result.UserType == "Admin" && result.auth && result.ActiveStatus == "Yes") {
                 localStorage.setItem('Admin', JSON.stringify(result.UserType));
                 localStorage.setItem('Admin_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));
                 console.warn(result.Name);
                 navigate("/")
 
-            } else if (result.UserType == "user") {
+            } else if (result.UserType == "Staff") {
                 localStorage.setItem("user", JSON.stringify(result.UserType));
                 localStorage.setItem('token_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));

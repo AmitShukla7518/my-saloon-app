@@ -5,19 +5,19 @@ import Footer from '../footer';
 import RYTCOntent from '../RYTContent';
 import validator from 'validator'
 export function Add_Staff() {
-    let [Fname, SetFname] = useState(" ");
+    let [FirstName, SetFname] = useState(" ");
     let [FnameErr, SetFnameErr] = useState(false);
-    let [Lname, SetLname] = useState(" ");
+    let [LastName, SetLname] = useState(" ");
     let [LnameErr, SetLnameErr] = useState(false);
     let [Gender, SetGender] = useState(" ");
     let [GenderErr, SetGenderErr] = useState(false);
-    let [BLDGRP, SetBLDGRP] = useState(" ");
+    let [BooldGRP, SetBLDGRP] = useState(" ");
     let [BLDGRPErr, SetBLDGRPErr] = useState(false);
-    let [PanAdhar, SetPanAdhar] = useState(" ");
+    let [Pan_Adhar, SetPanAdhar] = useState(" ");
     let [PanAdharErr, SetPanAdharErr] = useState(false);
     let [DOB, SetDOB] = useState(" ");
     let [DOBErr, SetDOBErr] = useState(false)
-    let [Mobile, SetMobile] = useState(" ")
+    let [MobileNo, SetMobile] = useState(" ")
     let [MobileError, SetMobileError] = useState(false)
     let [Email, SetEmail] = useState(" ")
     let [EmailError, SetEmailError] = useState(false)
@@ -28,7 +28,7 @@ export function Add_Staff() {
     let [Address, SetAddress] = useState(" ")
     let [AddressErr, SetAddressErr] = useState(false)
 
-    let DataShow = [Fname, Lname, Gender, BLDGRP,PanAdhar, DOB, Mobile, Email, Password, ConfirmPassword, Address]
+    // let DataShow = [Fname, Lname, Gender, BLDGRP, PanAdhar, DOB, Mobile, Email, Password, ConfirmPassword, Address]
 
 
     function isValidEmail(email) {
@@ -141,16 +141,42 @@ export function Add_Staff() {
         }
         SetAddress(Data)
     }
-    function collectData() {
-        alert("Data Saved successfully")
-        console.warn(DataShow);
 
+    const collectData = async () => {
+        SetFname(" ")
+        SetLname(" ")
+        SetGender(" ")
+        if (FnameHandler.length == 0 || LastName.length == 0 || Gender.length == 0 || DOB.length == 0 ||
+            BooldGRP.length == 0 || MobileNo.length == 0 || Pan_Adhar.length == 0 || Address.length == 0 || Email.length == 0 || Password.length == 0 || ConfirmPassword == 0) {
+
+            alert(" Please enter correct field")
+        } else {
+
+            let result = await fetch("http://localhost:5000/AddStaff", {
+
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+                body: JSON.stringify({ FirstName, LastName, Gender, DOB, BooldGRP, MobileNo, Pan_Adhar, Address, Email, Password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            result = await result.json();
+            console.warn(result.result);
+            alert(" Data saved");
+
+        }
 
     }
-
     return (
         <section className="h-100 bg-dark">
             <Header />
+
+
+
+
+            
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col">

@@ -7,13 +7,21 @@ export default function Header() {
     const navigate = useNavigate();
 
     const ShowName = localStorage.getItem('Name')
-    // console.warn(ShowName.concat);
-
-    // function LogoutHandler() {
 
 
-    //     navigate('/SingUP')
-    // }
+
+    const LogoutHandler = () => {
+        localStorage.clear();
+        navigate('/signup')
+    }
+
+
+    
+
+    const LogoutHandler2 = () => {
+        localStorage.clear();
+        navigate('/signup')
+    }
     return (
         <div>
 
@@ -63,18 +71,7 @@ export default function Header() {
                                                             </form>
                                                         </div>
 
-                                                        <div className="d-lg-block d-xs-none">
-                                                            <form role="search" className="search-form form_show" action="#">
-                                                                <div className="input-group">
-                                                                    <input type="text" className="form-control"
-                                                                        placeholder="Search..." />
-                                                                    <button type="button" className="btn" data-target="#"
-                                                                        data-toggle="" aria-label="Close">
-                                                                        <i className="ion-android-search"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
+
 
                                                     </div>
                                                     {/* <!-- notification_Start --> */}
@@ -247,7 +244,7 @@ export default function Header() {
                                                             </li>
                                                             <li>
                                                                 <Link to="/SingUP" > <i className="icon-logout"></i> Log Out </Link>
-                                                                {/* <Link to="/Login">Logout</Link> */}
+
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -404,7 +401,9 @@ export default function Header() {
                                                                 </li>
                                                             </ul>
                                                         </li>
-
+                                                        <li>
+                                                            <Link> <i className="icon-logout" onClick={LogoutHandler}></i> <span>LogOut</span> </Link>
+                                                        </li>
 
 
 
@@ -476,8 +475,9 @@ export default function Header() {
                                                             </ul>
 
                                                         </li>
-
-
+                                                        <li>
+                                                            <Link> <i className="icon-logout" onClick={LogoutHandler2}> </i> <span>LogOut</span> </Link>
+                                                        </li>
                                                     </ul>
 
                                                 </>

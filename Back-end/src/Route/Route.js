@@ -15,8 +15,9 @@ router.post('/Login', Middilware.Login);
 
 // Staff Routes 
 
-router.get('/AddStaff', StaffController.AddStaff)
+router.post('/AddStaff', StaffController.AddStaff)
 
-
+router.get('/GetEmpList', StaffController.GetEmpList)
+router.delete("/DeleteEMP/:EmpCode",StaffController.DeleteEMP);
 
 module.exports = router;

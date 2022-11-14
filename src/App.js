@@ -9,6 +9,7 @@ import { PrivateComponent } from './PrivateCompo/PrivateComponent';
 import $ from "jquery";
 import Add_servise from './component/Add_Staff/Add_Servise';
 
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Add_Staff } from './component/Add_Staff/Add-staff';
 function App() {
