@@ -7,11 +7,10 @@ import Login from './login-singUP/login';
 import React from 'react';
 import { PrivateComponent } from './PrivateCompo/PrivateComponent';
 import $ from "jquery";
-import Add_servise from './component/Add_Staff/Add_Servise';
-
-
+import Add_servise from './component/Staff-Manage/Add_Servise';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Add_Staff } from './component/Add_Staff/Add-staff';
+import { Add_Staff } from './component/Staff-Manage/Add-staff';
+import { Add_Servise } from './component/Servise-Manage/AddServise';
 function App() {
   return (
 
@@ -37,7 +36,7 @@ function App() {
 
           {/* Manage Staff Button */}
           <Route path='/Add Staff' element={<Add_Staff />} />
-          <Route path='/Delete Staff' element={<Add_servise/>} />
+          <Route path='/Delete Staff' element={<Add_servise />} />
           <Route path='/STaff Filter' element={<h1> Walcome to Sales Staff</h1>} />
           <Route path='/Staff Votes' element={<h1> Walcome to VIsite Staff Ratting</h1>} />
           {/* Manage Booking Button */}
@@ -46,7 +45,24 @@ function App() {
           <Route path='/Cancled Booking' element={<h1> Canceled  Booking</h1>} />
           <Route path='/Direct Booking' element={<h1> Direct Booking Entry </h1>} />
           <Route path='/Booking CheckOut' element={<h1>  Booking CheckOut </h1>} />
+
+          {/*Manage Servises */}
+          <Route path='/Add-Servises' element={<Add_Servise/>} />
+          <Route path='/servise-Price' element={<h1>Servise Price</h1>} />
+          <Route path='/Total-servise' element={<h1> Total Servises</h1>} />
+
+
+
+
+
+
+
+
+
           <Route path='/Login' element={<Login />} />
+
+
+
         </Route>
       </Routes>
     </div>

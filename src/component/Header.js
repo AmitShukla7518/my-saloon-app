@@ -243,7 +243,7 @@ export default function Header() {
                                                                 </Link>
                                                             </li>
                                                             <li>
-                                                                <Link to="/SingUP" > <i className="icon-logout"></i> Log Out </Link>
+                                                                <Link to="/SingUP" > <i className="icon-logout" onCanPlay={LogoutHandler}></i> Log Out </Link>
 
                                                             </li>
                                                         </ul>
@@ -365,16 +365,14 @@ export default function Header() {
                                                                 className="arrow"></span> </a>
                                                             <ul className="down_menu">
                                                                 <li>
-                                                                    <a href="portlet-base.html">Add servises</a>
+                                                                    <Link to="/Add-Servises">Add servises</Link>
+                                                                </li>
+                                                               
+                                                                <li>
+                                                                <Link to="/servise-Price">Servises Price</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="portlet-advanced.html">Delete servises</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="portlet-advanced.html">Servises Price</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="portlet-advanced.html"> Total Servise</a>
+                                                                    <Link to= "/Total-servise"> Total Servise</Link>
                                                                 </li>
                                                             </ul>
 
@@ -383,24 +381,7 @@ export default function Header() {
     <Link to="/Login"> <i className="fa fa-sign-out"></i> <span>Logout({ShowName})</span> </Link>
 </li> */}
 
-                                                        <li className="menu_sub">
-                                                            <a href="#"> <i className="fa fa-list"></i> <span>{ShowName}</span> <span
-                                                                className="arrow"></span> </a>
-                                                            <ul className="down_menu">
-                                                                <li>
-                                                                    <Link>Logout</Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Total Booking">Profile</Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Cancled Booking">Activity </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Direct Booking">Setting</Link>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
+                                                       
                                                         <li>
                                                             <Link> <i className="icon-logout" onClick={LogoutHandler}></i> <span>LogOut</span> </Link>
                                                         </li>

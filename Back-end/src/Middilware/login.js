@@ -22,12 +22,12 @@ const Login = async (req, res, next) => {
                     console.log(result);
                     for (var a = 0; a < result.length; a++) {
 
-                        res.send({ Name: result[a].FirstName, UserType: result[a].usertype, ActiveStatus: result[a].Active, auth: token });
+                        res.send({ Name: result[a].FirstName, UserType: result[a].UserType, ActiveStatus: result[a].ActiveStatus, auth: token });
                         console.log(result[a].FirstName);
-                        console.log(result[a].Active);
-                        console.log(result[a].usertype);
+                        console.log(result[a].ActiveStatus);
+                        console.log(result[a].UserType);
                     }
-                })
+                });
             }
             else {
                 console.log(" Password Incorrect");

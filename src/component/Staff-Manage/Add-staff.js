@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from 'react-router-dom'
+// const navigate = useNavigate();
 import "./Add_Staff.css"
 import Header from "../Header";
 import Footer from '../footer';
@@ -165,6 +167,7 @@ export function Add_Staff() {
             result = await result.json();
             console.warn(result.result);
             alert(" Data saved");
+            // navigate("/")
 
         }
 

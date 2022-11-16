@@ -38,15 +38,17 @@ export default function Login() {
                 }
             });
             result = await result.json();
-            console.log(result.Name);
+            console.log(result.UserType);
+            console.log(result.ActiveStatus);
+
             if (result.UserType == "Admin" && result.auth && result.ActiveStatus == "Yes") {
                 localStorage.setItem('Admin', JSON.stringify(result.UserType));
                 localStorage.setItem('Admin_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));
                 console.warn(result.Name);
-                navigate("/")
+                navigate("/");
 
-            } else if (result.UserType == "Staff") {
+            } else if (result.UserType == "Staff" && result.ActiveStatus == "Yes") {
                 localStorage.setItem("user", JSON.stringify(result.UserType));
                 localStorage.setItem('token_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));
