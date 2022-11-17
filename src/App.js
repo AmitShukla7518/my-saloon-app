@@ -8,6 +8,7 @@ import React from 'react';
 import { PrivateComponent } from './PrivateCompo/PrivateComponent';
 import $ from "jquery";
 import Add_servise from './component/Staff-Manage/Add_Servise';
+import Manage_servises from './component/Servise-Manage/Manage-Servises';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Add_Staff } from './component/Staff-Manage/Add-staff';
 import { Add_Servise } from './component/Servise-Manage/AddServise';
@@ -48,7 +49,7 @@ function App() {
 
           {/*Manage Servises */}
           <Route path='/Add-Servises' element={<Add_Servise/>} />
-          <Route path='/servise-Price' element={<h1>Servise Price</h1>} />
+          <Route path='/servise-Price' element={<Manage_servises/>} />
           <Route path='/Total-servise' element={<h1> Total Servises</h1>} />
 
 

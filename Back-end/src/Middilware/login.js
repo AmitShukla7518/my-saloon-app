@@ -21,7 +21,6 @@ const Login = async (req, res, next) => {
                 jwt.sign({ result }, jwttoken, { expiresIn: '3600s' }, function (err, token) {
                     console.log(result);
                     for (var a = 0; a < result.length; a++) {
-
                         res.send({ Name: result[a].FirstName, UserType: result[a].UserType, ActiveStatus: result[a].ActiveStatus, auth: token });
                         console.log(result[a].FirstName);
                         console.log(result[a].ActiveStatus);
@@ -36,14 +35,11 @@ const Login = async (req, res, next) => {
         }
     })
 }
-
-
-
 const VarifyToken = async (req, res, next) => {
     try {
         let Token = req.headers["x-auth-token"]
 
-        let DecodeToken = await jwt.verify(Token, jwttoken, { expiresIn: '300s' })
+        let DecodeToken = await jwt.verify(Token, jwttoken, { expiresIn: '3600s' })
         if (!DecodeToken) {
             return res.status(400).send({ status: false, msg: "Token is Invalid" })
         }
@@ -52,7 +48,6 @@ const VarifyToken = async (req, res, next) => {
         }
         next()
     }
-
 
     catch (err) {
         res.status(400).send({ status: false, Error: err.message })
@@ -63,5 +58,4 @@ const VarifyToken = async (req, res, next) => {
 module.exports = {
     Login,
     VarifyToken
-
-}
+} 

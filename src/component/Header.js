@@ -16,7 +16,7 @@ export default function Header() {
     }
 
 
-    
+
 
     const LogoutHandler2 = () => {
         localStorage.clear();
@@ -367,12 +367,12 @@ export default function Header() {
                                                                 <li>
                                                                     <Link to="/Add-Servises">Add servises</Link>
                                                                 </li>
-                                                               
+
                                                                 <li>
-                                                                <Link to="/servise-Price">Servises Price</Link>
+                                                                    <Link to="/servise-Price">Servises Price</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to= "/Total-servise"> Total Servise</Link>
+                                                                    <Link to="/Total-servise"> Total Servise</Link>
                                                                 </li>
                                                             </ul>
 
@@ -381,7 +381,7 @@ export default function Header() {
     <Link to="/Login"> <i className="fa fa-sign-out"></i> <span>Logout({ShowName})</span> </Link>
 </li> */}
 
-                                                       
+
                                                         <li>
                                                             <Link> <i className="icon-logout" onClick={LogoutHandler}></i> <span>LogOut</span> </Link>
                                                         </li>
@@ -390,7 +390,6 @@ export default function Header() {
 
 
                                                     </ul> </>
-
                                                 : localStorage.getItem("user") ? <>
                                                     <ul id="dc_accordion" className="sidebar-menu tree d-lg-flex">
 
@@ -415,7 +414,6 @@ export default function Header() {
                                                                 </li>
                                                             </ul>
                                                         </li>
-
                                                         <li className="menu_sub">
                                                             <a href="#"> <i className="fa fa-list"></i> <span>Manage Booking</span> <span
                                                                 className="arrow"></span> </a>
