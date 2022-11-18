@@ -173,44 +173,34 @@ export function Add_Staff() {
 
     }
     return (
-        <section className="h-100 bg-dark">
+        <div>
             <Header />
-
-
-
-
-            
-            <div className="container py-5 h-100">
-                <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col">
-                        <div className="card card-registration my-4">
-                            <div className="row g-0">
-                                <div className="col-xl-6 d-none d-xl-block">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                                        alt="Sample photo" />
+            <section className="h-100 bg-dark">
+                <div class="card card-shadow mb-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Add Staff
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form class="container-fluid" id="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label className="form-label" htmlFor="form3Example1m">First name</label>
+                                    <input type="text" id="form3Example1m" className="form-control form-control-lg" onChange={FnameHandler} />
+                                    {FnameErr ? <span style={{ color: 'red' }}>Please Enter First Name </span> : ""}
                                 </div>
-                                <div className="col-xl-6">
-                                    <div className="card-body p-md-5 text-black">
-                                        <h3 className="mb-5 text-uppercase">Add Staff</h3>
+                                <div class="col-md-6 mb-3">
+                                    <div className="form-outline">
+                                        <label className="form-label" htmlFor="form3Example1n">Last name</label>
+                                        <input type="text" id="form3Example1n" className="form-control form-control-lg" onChange={LnameHandler} />
+                                        {LnameErr ? <span style={{ color: 'red' }}>Please Enter valid Last Name </span> : ""}
 
-                                        <div className="row">
-                                            <div className="col-md-6 mb-4">
-                                                <div className="form-outline">
-                                                    <label className="form-label" htmlFor="form3Example1m">First name</label>
-                                                    <input type="text" id="form3Example1m" className="form-control form-control-lg" onChange={FnameHandler} />
-                                                    {FnameErr ? <span style={{ color: 'red' }}>Please Enter First Name </span> : ""}
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 mb-4">
-                                                <div className="form-outline">
-                                                    <label className="form-label" htmlFor="form3Example1n">Last name</label>
-                                                    <input type="text" id="form3Example1n" className="form-control form-control-lg" onChange={LnameHandler} />
-                                                    {LnameErr ? <span style={{ color: 'red' }}>Please Enter valid Last Name </span> : ""}
+                                    </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="row">
+                                </div>
+                            </div>
+                            <div className="row">
                                             <label className=".label2" htmlFor="form3Example8" >Gender</label>
                                             <div claclassNamess="dropdown mb-4">
 
@@ -241,6 +231,7 @@ export function Add_Staff() {
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div className="form-outline mb-4">
                                             <label className="form-label" htmlFor="form3Example9">DOB</label>
                                             <input type="text" id="form3Example9" className="form-control form-control-lg" placeholder="YYYY/MM/DD" onChange={DOBHandler} />
@@ -259,6 +250,7 @@ export function Add_Staff() {
 
                                         </div>
 
+
                                         <div className="row">
                                             <div className="col-md-6 mb-4">
                                                 <div className="form-outline">
@@ -276,6 +268,7 @@ export function Add_Staff() {
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div className="row">
                                             <div className="col-md-6 mb-4">
                                                 <div className="form-outline">
@@ -293,20 +286,18 @@ export function Add_Staff() {
                                                 </div>
                                             </div>
                                         </div>
-
+                            
                                         <div className="d-flex justify-content-end pt-3">
                                             <button type="button" className="btn btn-warning btn-lg ms-2" onClick={collectData}>Submit form</button>
                                         </div>
+                        </form>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
+
+            </section>
             <Footer />
-        </section>
+        </div>
 
 
     )

@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const conn = require('../src/conn/conn')
 const router = require("./Route/Route");
-
+var multer = require('multer');
 
 const port = 5000
 const cores = require('cors');
@@ -17,6 +17,25 @@ var allowCrossDomain = function (req, res, next) {
     next();
 }
 app.use(allowCrossDomain);
+const Upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, "Uploads")
+        },
+        filename: function (req, file, cb) {
+            var hello = file.fieldname
+            cb(null, file.fieldname + " " + Date.now() + ".jpg")
+
+        }
+    })
+
+
+}).single("user_file")
+
+
+app.post("/upload", Upload, (req, resp) => {
+    resp.send("file Uploaded successfully")
+})
 
 
 //

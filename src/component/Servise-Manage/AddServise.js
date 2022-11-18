@@ -9,39 +9,97 @@ import validator from 'validator'
 
 
 export function Add_Servise() {
-    let [Sname, SetService] = useState(" ")
+    let [Service, SetService] = useState(" ")
     let [ServiceErr, SetServiceErr] = useState(false)
+    let [Description, SetDescription] = useState(" ")
+    let [DescriptionErr, SetDescriptionErr] = useState(false)
     let [Price, setPrice] = useState(" ")
-    let [PriceErr, setPriceErr] = useState(" ")
+    let [PriceErr, setPriceErr] = useState(false)
+    let [Duration, setDuration] = useState(" ")
+    let [DurationError, setDurationErr] = useState(false)
+    let [Image, setImage] = useState(" ")
+    let [ImageError, setImageErr] = useState(false)
+    let [suggestion, setsuggestion] = useState(" ")
+    let [suggestionErr, setsuggestionErr] = useState(false)
+
+    function ServiceHAndler(e) {
+        let Data = e.target.value;
+        if (Data.length < 3) {
+            SetServiceErr(true)
+        }
+        else {
+            SetServiceErr(false)
+        }
+        SetService(Data)
+    }
+    function DescriptionHandler(e) {
+        let Data = e.target.value;
+        if (Data.length < 3) {
+            SetDescriptionErr(true)
+        }
+        else {
+            SetDescriptionErr(false)
+        }
+
+        setDuration(Data)
+    }
+
 
     function PriceHandler(e) {
         let Data = e.target.value;
         if (Data == 0) {
-            console.warn("Please enter gtreter than 3 characters");
-        }
-        else {
-            console.warn("All is well!");
+            setPriceErr(true)
+
+        } else {
+            setPriceErr(false)
         }
         setPrice(Data)
     }
-    function ServiceHandler(e) {
+    function DurationHandler(e) {
         let Data = e.target.value;
-        if (Data.length < 3) {
-            console.warn("Please enter gtreter than 3 characters");
+        if (Data == 0) {
+            setDurationErr(true)
+        } else {
+            setDurationErr(false)
         }
-        else {
-            console.warn("All is well!");
+        setDuration(Data)
+    }
+
+    function ImageHandler(e) {
+        const image = e.target.files[0];
+        if (!image) {
+            console.log('image is required');
+
         }
-        SetService(Data)
+        if (!image.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+
+            setImageErr(true)
+        } else {
+            setImageErr(false)
+        }
+        setImage(image)
+
+
+    }
+    function SuggestionHandler(e){
+let Data  = e.target.value;
+if (Data.length < 3) {
+    setsuggestionErr(true)
+}
+else {
+    setsuggestionErr(false)
+}
+
+setDuration(Data)
     }
 
     async function CollectData() {
+        console.warn(Service, Price, Duration, Description,, Image);
         if (Sname.length == 0 || Price.length == 0) {
             alert(" Please Enter Correct  Fields");
         } else {
 
             let result = await fetch("http://localhost:5000/AddServises", {
-
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
@@ -56,53 +114,67 @@ export function Add_Servise() {
         }
 
     }
-
     return (
-
-        <section className="h-100 bg-dark">
+        <div>
             <Header />
-
-            <div className="row d-flex justify-content-center align-items-center h-100">
-                <div className="col">
-                    <div className="card card-registration my-4">
-                        <div className="row g-0">
-                            <div className="col-xl-6 d-none d-xl-block">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                    alt="Sample photo" />
-                            </div>
-                            <div className="col-xl-6">
-                                <div className="card-body p-md-5 text-black">
-                                    <h3 className="mb-5 text-uppercase">Add Staff</h3>
-
-                                    <div className="row">
-                                        <div className="col-md-6 mb-4">
-                                            <div className="form-outline">
-                                                <label className="form-label" htmlFor="form3Example1m"> <b> Servise Name </b> </label>
-                                                <input type="text" id="form3Example1m" className="form-control form-control-lg" onChange={ServiceHandler} />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6 mb-4">
-                                            <div className="form-outline">
-                                                <label className="form-label" htmlFor="form3Example1n"> <b>Price</b> </label>
-                                                <input type="Number" id="form3Example1n" className="form-control form-control-lg" onChange={PriceHandler} />
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="d-flex justify-content-end pt-3">
-                                            <button type="button" className="btn btn-warning btn-lg ms-2" onClick={CollectData} >Submit</button>
-                                        </div>
-
+            <section className="h-100 bg-dark">
+                <div className="card card-shadow mb-4">
+                    <div className="card-header">
+                        <div className="card-title">
+                            Add Staff
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <form className="container-fluid" id="needs-validation" novalidate>
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label" htmlFor="form3Example1m"> <b>Service Name</b></label>
+                                    <input type="text" id="form3Example1m" className="form-control form-control-lg" onChange={ServiceHAndler} />
+                                    {ServiceErr ? <span style={{ color: 'red' }}>Please Enter Valid Service Name</span> : ""}
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-outline">
+                                        <label className="form-label" htmlFor="form3Example1n"><b>Description</b> </label>
+                                        <textarea className="form-control" id="form4Example3" rows="4" onChange={DescriptionHandler}></textarea>
+                                        {DescriptionErr ? <span style={{ color: 'red' }}>Please Enter Valid Service Name</span> : ""}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label" htmlFor="form3Example1m"> <b>Price</b></label>
+                                    <input type="text" id="form3Example1m" className="form-control form-control-lg" onChange={PriceHandler} />
+                                    {PriceErr ? <span style={{ color: 'red' }}>Please Enter Valid Ammount</span> : ""}
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-outline">
+                                        <label className="form-label" htmlFor="form3Example1n"><b>Duration</b></label>
+                                        <input type="text" className="form-control" id="form4Example3" rows="4" onChange={DurationHandler} />
+                                        {DurationError ? <span style={{ color: 'red' }}>Please Enter Valid Duration</span> : ""}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <label className="custom-file1">
+
+                                    <input type="file" id="file2" className="custom-file-input" onChange={ImageHandler} />
+                                    <span className="custom-file-control"></span> </label>
+                                {ImageError ? <span style={{ color: 'red' }}>Please Upload Valid Image Format</span> : ""}
+
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-outline">
+                                        <label className="form-label" htmlFor="form3Example1n"><b>Suggestion</b></label>
+                                        <input type="text" className="form-control" id="form4Example3"  onChange={SuggestionHandler} />
+                                        {suggestionErr ? <span style={{ color: 'red' }}>Please Enter Valid Suggestion</span> : ""}
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" className="btn btn-primary" onClick={CollectData}>Button</button>
+                        </form>
                     </div>
                 </div>
-            </div>
+            </section>
             <Footer />
-        </section>
-
+        </div>
     )
 }
