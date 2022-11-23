@@ -1,11 +1,12 @@
 // import { useState } from "react";
 import React, { useEffect, useState } from 'react'
+import bcrypt from 'bcryptjs'
 import { useNavigate, Link } from 'react-router-dom';
 import validator from 'validator'
 // import { BrowserRouter, Route, Routes, Switch, Li, Link } from 'react-router-dom';
 
 export default function Ragister() {
-    const navigate = useNavigate();
+ const navigate = useNavigate();
     let [Name, setName] = useState(" ")
     let [NameError, setNameError] = useState(false)
     let [Mobile, setMobile] = useState(" ")
@@ -16,7 +17,10 @@ export default function Ragister() {
     let [PasswordError, setPasswordError] = useState(false)
     let [ConfirmPassword, setConfirmPassword] = useState(" ");
     let [ConfirmPasswordError, setConfirmPasswordErr] = useState(false)
-
+    const salt = bcrypt.genSaltSync(10)
+    let value = Password;
+   
+     
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
@@ -78,12 +82,16 @@ export default function Ragister() {
 
     }
 
-
     const collectData = async () => {
         if (Name.length < 3 || Email.length < 3 || Password.length < 3) {
 
             alert(" Please enter correct field")
         } else {
+
+            let value = Password;
+            const salt = await bcrypt.genSalt(10);
+            value = await bcrypt.hash(value, salt);
+          console.warn(Name, Mobile, Email, value);
 
             // console.warn(Name, Password, Email);
             // localStorage.setItem('user', Name);
@@ -94,7 +102,7 @@ export default function Ragister() {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
-                body: JSON.stringify({ Name, Mobile, Email, Password }),
+                body: JSON.stringify({ Name, Mobile, Email, value }),
                 headers: {
                     'Content-Type': 'application/json'
                 }

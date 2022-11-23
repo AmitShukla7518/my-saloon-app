@@ -1,0 +1,148 @@
+
+.my-color {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    }
+    
+    .login-box {
+        width: 100%;
+        background-color: #99b9cc;
+        height: 551px;
+       
+    
+    }
+    
+    .form-box {
+        width: 100%;
+        /* height: 450px; */
+        
+        padding: 30px;
+    }
+    
+    .form-box h5 {
+        color: gray;
+    }
+    
+    .content-box {
+        display: flex;
+        box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+        background-color: #fff;
+    }
+    
+    .my-sign-form label {
+        display: block;
+        font-size: 14px;
+        padding-bottom: 2px;
+        padding-top: 14px;
+        color: gray;
+    }
+    
+    .my-sign-form input {
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 20px;
+        padding: 4px 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+    }
+    
+    .my-sign-btn button {
+        background-color: #639;
+        margin-top: 23px;
+        border-radius: 51px;
+        padding: 6px;
+        color: #fff;
+        width: 100%;
+        border: none;;
+    }
+    
+    
+    
+    .create-item {
+        padding: 24px;
+        margin-top: 39px;
+    }
+    
+    .create {
+        border: 1px solid gray;
+        border-radius: 50px;
+        margin: 20px 0px;
+        background: rgba(238, 238, 238, .6);
+    }
+    
+    .create p {
+        text-align: center;
+        margin: 0;
+        padding: 10px;
+        color: gray;
+        font-weight: 600;
+    }
+    
+    .create p a {
+        text-decoration: none;
+    
+    }
+    
+    .create-box h2 {
+        font-size: 35px;
+        text-align: center;
+    }
+    
+    .with-google p a {
+        color: #ec412c;
+    }
+    
+    .with-google {
+        border: 1px solid #ec412c;
+        transition: all 0.5s;
+    }
+    
+    .with-facebook p a {
+        color: #3765c9;
+    }
+    
+    .with-facebook {
+        border: 1px solid #3765c9;
+        transition: all 0.5s;
+    }
+    
+    .with-email p a {
+        color: #663399;
+    }
+    
+    .with-email {
+        border: 1px solid #663399;
+        transition: all 0.5s;
+    
+    }
+    
+    .with-email:hover {
+        background-color: #663399;
+    
+    }
+    
+    .with-email:hover a {
+        color: #fff;
+    }
+    .form-box h5 {
+        color: gray;
+        font-size: 24px;
+    }
+    
+    
+    .with-facebook:hover {
+        background-color: #3765c9;
+    
+    }
+    
+    .with-facebook:hover a {
+        color: #fff;
+    }
+    
+    
+    .with-google:hover {
+        background-color: #ec412c;
+    
+    }
+    

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function Add_servise() {
+export default function Manage_Staff() {
     const [EMPList, setEMPList] = useState([]);
     let [AllEMP, setALLEMP] = useState("NA");
 
@@ -51,7 +51,7 @@ export default function Add_servise() {
     };
 
     return (
-        <div>
+        <div class="wrapper">
             <Header />
             <div className="row">
                 <div className="col-lg-3 col-md-6 mb-4">

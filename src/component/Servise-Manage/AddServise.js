@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from 'react-router-dom'
-// const navigate = useNavigate();
+// 
 import "../Staff-Manage/Add_Staff.css"
 import Header from "../Header";
 import Footer from '../footer';
@@ -18,9 +18,12 @@ export function Add_Servise() {
     let [Duration, setDuration] = useState(" ")
     let [DurationError, setDurationErr] = useState(false)
     let [Image, setImage] = useState(" ")
-    let [ImageError, setImageErr] = useState(false)
-    let [suggestion, setsuggestion] = useState(" ")
+    let [ImageError, setImageErr] = useState(false);
+    let [Suggestion, setsuggestion] = useState(" ")
     let [suggestionErr, setsuggestionErr] = useState(false)
+    const navigate = useNavigate();
+
+
 
     function ServiceHAndler(e) {
         let Data = e.target.value;
@@ -41,10 +44,8 @@ export function Add_Servise() {
             SetDescriptionErr(false)
         }
 
-        setDuration(Data)
+        SetDescription(Data)
     }
-
-
     function PriceHandler(e) {
         let Data = e.target.value;
         if (Data == 0) {
@@ -75,44 +76,43 @@ export function Add_Servise() {
 
             setImageErr(true)
         } else {
+            let reader = new FileReader()
+            reader.readAsDataURL(e.target.files[0])
+            setImage(Image)
             setImageErr(false)
         }
-        setImage(image)
+
 
 
     }
-    function SuggestionHandler(e){
-let Data  = e.target.value;
-if (Data.length < 3) {
-    setsuggestionErr(true)
-}
-else {
-    setsuggestionErr(false)
-}
-
-setDuration(Data)
-    }
-
-    async function CollectData() {
-        console.warn(Service, Price, Duration, Description,, Image);
-        if (Sname.length == 0 || Price.length == 0) {
-            alert(" Please Enter Correct  Fields");
-        } else {
-
-            let result = await fetch("http://localhost:5000/AddServises", {
-                method: 'post',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'same-origin',
-                body: JSON.stringify({ Sname, Price }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            result = await result.json();
-            console.warn(result.result);
-            alert(" Data saved");
+    function SuggestionHandler(e) {
+        let Data = e.target.value;
+        if (Data.length < 3) {
+            setsuggestionErr(true)
+        }
+        else {
+            setsuggestionErr(false)
         }
 
+        setsuggestion(Data)
+    }
+    async function CollectData() {
+        //   console.warn("hell:  "+Service, Description, Price, Duration, Image, Suggestion);
+
+        let result = await fetch("http://localhost:5000/AddServises", {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ Service, Description, Price, Duration, Image, Suggestion }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        result = (await result).json();
+        console.warn(result);
+        if (result) {
+            navigate("/Manage-services")
+        }
     }
     return (
         <div>
@@ -121,11 +121,11 @@ setDuration(Data)
                 <div className="card card-shadow mb-4">
                     <div className="card-header">
                         <div className="card-title">
-                            Add Staff
+                            Add Servises
                         </div>
                     </div>
                     <div className="card-body">
-                        <form className="container-fluid" id="needs-validation" novalidate>
+                        <form className="container-fluid" id="needs-validation" >
                             <div className="row">
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label" htmlFor="form3Example1m"> <b>Service Name</b></label>
@@ -164,7 +164,7 @@ setDuration(Data)
                                 <div className="col-md-6 mb-3">
                                     <div className="form-outline">
                                         <label className="form-label" htmlFor="form3Example1n"><b>Suggestion</b></label>
-                                        <input type="text" className="form-control" id="form4Example3"  onChange={SuggestionHandler} />
+                                        <input type="text" className="form-control" id="form4Example3" onChange={SuggestionHandler} />
                                         {suggestionErr ? <span style={{ color: 'red' }}>Please Enter Valid Suggestion</span> : ""}
                                     </div>
                                 </div>
@@ -176,5 +176,6 @@ setDuration(Data)
             </section>
             <Footer />
         </div>
+
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from 'react-router-dom'
+import bcrypt from 'bcryptjs'
 // const navigate = useNavigate();
 import "./Add_Staff.css"
 import Header from "../Header";
@@ -30,6 +31,14 @@ export function Add_Staff() {
     let [Address, SetAddress] = useState(" ")
     let [AddressErr, SetAddressErr] = useState(false)
 
+
+    let value =Password;
+    
+
+
+
+
+
     // let DataShow = [Fname, Lname, Gender, BLDGRP, PanAdhar, DOB, Mobile, Email, Password, ConfirmPassword, Address]
 
 
@@ -46,6 +55,9 @@ export function Add_Staff() {
 
     function FnameHandler(e) {
         let Data = e.target.value;
+
+        console.warn(Data);
+
         if (Data.length < 3) {
             SetFnameErr(true);
         }
@@ -145,17 +157,30 @@ export function Add_Staff() {
     }
 
     const collectData = async () => {
-        SetFname(" ")
-        SetLname(" ")
-        SetGender(" ")
+        // SetFname(" ")
+        // SetLname(" ")
+        // SetGender(" ")
         if (FnameHandler.length == 0 || LastName.length == 0 || Gender.length == 0 || DOB.length == 0 ||
             BooldGRP.length == 0 || MobileNo.length == 0 || Pan_Adhar.length == 0 || Address.length == 0 || Email.length == 0 || Password.length == 0 || ConfirmPassword == 0) {
 
             alert(" Please enter correct field")
         } else {
 
-            let result = await fetch("http://localhost:5000/AddStaff", {
+            
+            const salt = await bcrypt.genSalt(10);
+            FirstName = await bcrypt.hash(FirstName, salt);
+            LastName = await bcrypt.hash(LastName, salt);
+            Gender = await bcrypt.hash(Gender, salt);
+            DOB = await bcrypt.hash(DOB, salt);
+            BooldGRP = await bcrypt.hash(BooldGRP, salt);
+            MobileNo = await bcrypt.hash(MobileNo, salt);
+            Pan_Adhar = await bcrypt.hash(Pan_Adhar, salt);
+            Address = await bcrypt.hash(Address, salt);
+            Email = await bcrypt.hash(Email, salt);
+            Password = await bcrypt.hash(Password, salt);
 
+            console.warn(FirstName, LastName, Gender, DOB, BooldGRP, MobileNo, Pan_Adhar, Address, Email, Password);
+            let result = await fetch("http://localhost:5000/AddStaff", {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
@@ -173,7 +198,7 @@ export function Add_Staff() {
 
     }
     return (
-        <div>
+        <div class="wrapper">
             <Header />
             <section className="h-100 bg-dark">
                 <div class="card card-shadow mb-4">
@@ -201,95 +226,95 @@ export function Add_Staff() {
                                 </div>
                             </div>
                             <div className="row">
-                                            <label className=".label2" htmlFor="form3Example8" >Gender</label>
-                                            <div claclassNamess="dropdown mb-4">
+                                <label className=".label2" htmlFor="form3Example8" >Gender</label>
+                                <div claclassNamess="dropdown mb-4">
 
-                                                <div className="single-input beauty-service clearfix">
-                                                    <select className="boxes" name="beauty-service" required onChange={(e) => SetGender(e.target.value)}>
-                                                        <option selected className="buttons">-------Select-------</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Femal">Female</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                    {GenderErr ? <span style={{ color: 'red' }}>Please Select Valid Gander </span> : ""}
-                                                </div>
-                                            </div>
-                                            <label className="label2" htmlFor="form3Example8" >Blood Group</label>
-                                            <div claclassNamess="dropdown mb-4">
-                                                <div className="single-input beauty-service clearfix">
-                                                    <select className="boxes" name="beauty-service" required onChange={(e) => SetBLDGRP(e.target.value)} >
-                                                        <option selected className="buttons">-------Select-------</option>
-                                                        <option value="O+">O+</option>
-                                                        <option value="O-">O-</option>
-                                                        <option value="A+">A+</option>
-                                                        <option value="A-">A-</option>
-                                                        <option value="B+">B+</option>
-                                                        <option value="B-">B-</option>
-                                                        <option value="AB+">AB+</option>
-                                                        <option value="AB-">AB-</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div className="single-input beauty-service clearfix">
+                                        <select className="boxes" name="beauty-service" required onChange={(e) => SetGender(e.target.value)}>
+                                            <option selected className="buttons">-------Select-------</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Femal">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        {GenderErr ? <span style={{ color: 'red' }}>Please Select Valid Gander </span> : ""}
+                                    </div>
+                                </div>
+                                <label className="label2" htmlFor="form3Example8" >Blood Group</label>
+                                <div claclassNamess="dropdown mb-4">
+                                    <div className="single-input beauty-service clearfix">
+                                        <select className="boxes" name="beauty-service" required onChange={(e) => SetBLDGRP(e.target.value)} >
+                                            <option selected className="buttons">-------Select-------</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form3Example9">DOB</label>
-                                            <input type="text" id="form3Example9" className="form-control form-control-lg" placeholder="YYYY/MM/DD" onChange={DOBHandler} />
-                                            {DOBErr ? <span style={{ color: 'red' }}>Please Enter Valid Date </span> : ""}
-                                        </div>
+                            <div className="form-outline mb-4">
+                                <label className="form-label" htmlFor="form3Example9">DOB</label>
+                                <input type="text" id="form3Example9" className="form-control form-control-lg" placeholder="YYYY/MM/DD" onChange={DOBHandler} />
+                                {DOBErr ? <span style={{ color: 'red' }}>Please Enter Valid Date </span> : ""}
+                            </div>
 
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form3Example90">Adhar or PanNumber </label>
-                                            <input type="text" id="form3Example90" className="form-control form-control-lg" placeholder="XXXX XXXX XXXX" onChange={PanAdharHandler} />
-                                            {PanAdharErr ? <span style={{ color: 'red' }}>Please Enter Valid Date </span> : ""}
-                                        </div>
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form3Example8">Address</label>
-                                            <input type="text" id="form3Example8" className="form-control form-control-lg" onChange={AddressHandler} />
-                                            {AddressErr ? <span style={{ color: 'red' }}>Please Enter Valid Address </span> : ""}
+                            <div className="form-outline mb-4">
+                                <label className="form-label" htmlFor="form3Example90">Adhar or PanNumber </label>
+                                <input type="text" id="form3Example90" className="form-control form-control-lg" placeholder="XXXX XXXX XXXX" onChange={PanAdharHandler} />
+                                {PanAdharErr ? <span style={{ color: 'red' }}>Please Enter Valid Date </span> : ""}
+                            </div>
+                            <div className="form-outline mb-4">
+                                <label className="form-label" htmlFor="form3Example8">Address</label>
+                                <input type="text" id="form3Example8" className="form-control form-control-lg" onChange={AddressHandler} />
+                                {AddressErr ? <span style={{ color: 'red' }}>Please Enter Valid Address </span> : ""}
 
-                                        </div>
+                            </div>
 
 
-                                        <div className="row">
-                                            <div className="col-md-6 mb-4">
-                                                <div className="form-outline">
-                                                    <label className="form-label" placeholder="+91 xxxx-nnnnnn" >Contect No</label>
-                                                    <input type="number" id="form3Example1m1" className="form-control form-control-lg" onChange={MobileHAndler} maxLength={13} />
-                                                    {MobileError ? <span style={{ color: 'red' }}>Please Enter valid Mobile Number</span> : ""}
+                            <div className="row">
+                                <div className="col-md-6 mb-4">
+                                    <div className="form-outline">
+                                        <label className="form-label" placeholder="+91 xxxx-nnnnnn" >Contect No</label>
+                                        <input type="number" id="form3Example1m1" className="form-control form-control-lg" onChange={MobileHAndler} maxLength={13} />
+                                        {MobileError ? <span style={{ color: 'red' }}>Please Enter valid Mobile Number</span> : ""}
 
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 mb-4">
-                                                <div className="form-outline">
-                                                    <label className="form-label" htmlFor="form3Example1n1">Email</label>
-                                                    <input type="text" id="form3Example1n1" className="form-control form-control-lg" onChange={EmailHAndler} />
-                                                    {EmailError ? <span style={{ color: 'red' }}>Please Enter valid Mail </span> : " "}
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6 mb-4">
+                                    <div className="form-outline">
+                                        <label className="form-label" htmlFor="form3Example1n1">Email</label>
+                                        <input type="text" id="form3Example1n1" className="form-control form-control-lg" onChange={EmailHAndler} />
+                                        {EmailError ? <span style={{ color: 'red' }}>Please Enter valid Mail </span> : " "}
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <div className="row">
-                                            <div className="col-md-6 mb-4">
-                                                <div className="form-outline">
-                                                    <label className="form-label" placeholder="+91 xxxx-nnnnnn" >Password</label>
-                                                    <input type="password" id="form3Example1m1" className="form-control form-control-lg" onChange={PasswordHandler} />
-                                                    {PasswordError ? <span style={{ color: 'red' }}>Password Must be 8Digit ("Ex-Abcd@1111)</span> : ""}
+                            <div className="row">
+                                <div className="col-md-6 mb-4">
+                                    <div className="form-outline">
+                                        <label className="form-label" placeholder="+91 xxxx-nnnnnn" >Password</label>
+                                        <input type="password" id="form3Example1m1" className="form-control form-control-lg" onChange={PasswordHandler} />
+                                        {PasswordError ? <span style={{ color: 'red' }}>Password Must be 8Digit ("Ex-Abcd@1111)</span> : ""}
 
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 mb-4">
-                                                <div className="form-outline">
-                                                    <label className="form-label" htmlFor="form3Example1n1">Confirm Password</label>
-                                                    <input type="password" id="form3Example1n1" className="form-control form-control-lg" onChange={CNFRMPasswordHandler} />
-                                                    {ConfirmPasswordError ? <span style={{ color: 'red' }}>Confirm Password Does't Match </span> : ""}
-                                                </div>
-                                            </div>
-                                        </div>
-                            
-                                        <div className="d-flex justify-content-end pt-3">
-                                            <button type="button" className="btn btn-warning btn-lg ms-2" onClick={collectData}>Submit form</button>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6 mb-4">
+                                    <div className="form-outline">
+                                        <label className="form-label" htmlFor="form3Example1n1">Confirm Password</label>
+                                        <input type="password" id="form3Example1n1" className="form-control form-control-lg" onChange={CNFRMPasswordHandler} />
+                                        {ConfirmPasswordError ? <span style={{ color: 'red' }}>Confirm Password Does't Match </span> : ""}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="d-flex justify-content-end pt-3">
+                                <button type="button" className="btn btn-warning btn-lg ms-2" onClick={collectData}>Submit form</button>
+                            </div>
                         </form>
 
                     </div>

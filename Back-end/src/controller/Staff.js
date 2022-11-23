@@ -20,9 +20,7 @@ const AddStaff = async (req, res, next) => {
         Email: req.body.Email,
         Password: req.body.Password,
     }
-
-
-    if (!Validation.isValid(Data.FirstName)) {
+ if (!Validation.isValid(Data.FirstName)) {
         return res.status(400).send({ status: false, message: "Please provide First Name field 🛑" });
     }
     if (!Validation.isValid(Data.LastName)) {
@@ -86,20 +84,15 @@ const AddStaff = async (req, res, next) => {
     });
 
 }
-
 const GetEmpList = (req, res) => {
-
     let Sqlquery = "select *from tbl_AddStaff"
     con.query(Sqlquery, (err, result) => {
         if (err) throw err;
         res.send(result)
         // console.log(result);
 
-
     })
-
 }
-
 const DeleteEMP = (req, res) => {
     let EmpCode = req.params.EmpCode;
 
@@ -109,15 +102,8 @@ const DeleteEMP = (req, res) => {
         if (err) throw err;
         res.send(result);
         console.log(result);
-
-
-    })
-
-
-
+    });
 }
-
-
 const SearchEMP = (req, res) => {
 
     let EMPID = req.params.key;

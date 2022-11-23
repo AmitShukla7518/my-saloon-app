@@ -243,7 +243,7 @@ export default function Header() {
                                                                 </Link>
                                                             </li>
                                                             <li>
-                                                                <Link to="/SingUP" > <i className="icon-logout" onCanPlay={LogoutHandler}></i> Log Out </Link>
+                                                                <Link to="/SingUP" > <i className="icon-logout" onClick={LogoutHandler}></i> Log Out </Link>
 
                                                             </li>
                                                         </ul>
@@ -282,7 +282,7 @@ export default function Header() {
                                                                     <Link to="/Add Store">Add Store</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Delete Store">Delete Store</Link>
+                                                                    <Link to="/Manage-Store">Manage Store</Link>
                                                                 </li>
                                                                 <li>
                                                                     <Link to="/Sales Filter">Store Sales By Filter</Link>
@@ -307,7 +307,7 @@ export default function Header() {
                                                                     <Link to="/Add Staff">Add Staff</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Delete Staff">Delete Staff</Link>
+                                                                    <Link to="/Manage-Staff">Manage Staff</Link>
                                                                 </li>
                                                                 <li>
                                                                     <Link to="/STaff Filter">Show Staff by Filter</Link>
@@ -369,17 +369,18 @@ export default function Header() {
                                                                 </li>
 
                                                                 <li>
-                                                                    <Link to="/servise-Price">Servises Price</Link>
+                                                                    <Link to="/Manage-services">Manage Services </Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Total-servise"> Total Servise</Link>
+                                                                    <Link to="/update/:id">Update Services</Link>
                                                                 </li>
                                                             </ul>
 
                                                         </li>
                                                         {/* <li>
-    <Link to="/Login"> <i className="fa fa-sign-out"></i> <span>Logout({ShowName})</span> </Link>
-</li> */}
+   
+                                                   <Linkto="/Login"> <i className="fa fa-sign-out"></i> <span>Logout({ShowName})</span> </Link>
+                                                                  </li> */}
 
 
                                                         <li>
