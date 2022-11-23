@@ -197,7 +197,7 @@ export default function Manage_Staff() {
                                         <td>{item.FirstName + " " + item.LastName}</td>
                                         <td>{item.MobileNo}</td>
                                         <td>{item.Pan_Adhar}</td>
-                                        <td>{item.EMPStatus}</td>
+                                        <td>{item.ActiveStatus}</td>
                                         <td>
                                             <button type="button" className="btn btn-square btn-secondary" onClick={() => DeleteEMP(item.EmpCode)}>
                                                 <i className="icon-trash "></i>

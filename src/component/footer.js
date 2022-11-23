@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer(){
 return(
 
@@ -9,7 +11,7 @@ return(
                 <div className="copy_right">
                     <p>
                         2018 © Dashboard Theme By
-                        <a href="#">Truckry</a>
+                        <Link to="/"> Truckry</Link>
                     </p>
                 </div>
                 {/* <a id="back-to-top" href="#" style="display: inline;"> <i className="ion-android-arrow-up"></i> </a> */}

@@ -37,11 +37,11 @@ export default function Header() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="logo d-flex align-items-center">
-                                        <a href="index.html"> <span className="logo-default">
+                                        <Link to="/"> <span className="logo-default">
                                             <img src="assets/images/logo.png" alt="" className="d-none d-lg-block" />
                                             <img src="assets/images/logo2.png" alt="" className="d-block d-lg-none" />
 
-                                        </span> </a>
+                                        </span> </Link>
                                         <div className="icon_menu">
                                             <a href="#" className="menu-toggler sidebar-toggler"></a>
                                         </div>
@@ -407,7 +407,7 @@ export default function Header() {
                                                                     <Link to="/Add Staff">Add Staff</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Delete Staff">Total Staff</Link>
+                                                                    <Link to="/Manage-Staff">Manage Staff</Link>
                                                                 </li>
 
                                                                 <li>
