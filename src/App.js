@@ -1,21 +1,22 @@
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './component/Header';
 import Footer from './component/footer';
 import RYTCOntent from './component/RYTContent';
 import Ragister from './login-singUP/Ragister';
 import Login from './login-singUP/login';
 import React from 'react';
-
-
 import { PrivateComponent } from './PrivateCompo/PrivateComponent';
-import { Add_Store } from './component/Store-Managment/Add-Store';
 
-import Manage_servises from './component/Servise-Manage/Manage-Servises';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Add_Store } from './component/Store-Managment/Add-Store';
+import Manage_Store from './component/Store-Managment/Manage-Store';
+import UpdateStore from './component/Store-Managment/UpdateStore';
+
+
 import { Add_Staff } from './component/Staff-Manage/Add-staff';
 import Manage_Staff from './component/Staff-Manage/Manage-Staff';
 
 import { Add_Servise } from './component/Servise-Manage/AddServise';
+import Manage_servises from './component/Servise-Manage/Manage-Servises';
 import UpdateServises from './component/Servise-Manage/UpdateServises';
 function App() {
   return (
@@ -37,7 +38,11 @@ function App() {
           <Route path='/hello' element={<h1>Hello,Walcome To DAshBoard-1 </h1>} />
           {/* Manage Store Button */}
           <Route path='/Add Store' element={<Add_Store />} />
-          <Route path='/Manage-Store' element={<h1> Walcome to Delete Store</h1>} />
+          <Route path='/Manage-Store' element={<Manage_Store />} />
+          <Route path="/UpdateStore" element={<UpdateStore />} />
+          <Route path="/UpdateStore/:StoreCode" element={<UpdateStore/>} />
+
+
           <Route path='/Sales Filter' element={<h1> Walcome to Sales Filter</h1>} />
           <Route path='/Store Votes' element={<h1> Walcome to VIsite Store Ratting</h1>} />
 
@@ -57,7 +62,7 @@ function App() {
           <Route path='/Add-Servises' element={<Add_Servise />} />
           <Route path='/Manage-services' element={<Manage_servises />} />
           <Route path="/UpdateServises/:Scode" element={<UpdateServises />} />
-          <Route path='/Login' element={<Login />} />
+
 
 
 

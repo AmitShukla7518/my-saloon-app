@@ -2,11 +2,10 @@ const express = require('express');
 const con = require('../conn/conn');
 const Validation = require("../Validation/Validation");
 var multer = require('multer');
-var Image;
 const UploadImg = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, "Uploads/")
+            cb(null, "Uploads/Servises/")
         },
         filename: function (req, file, cb) {
 
@@ -16,9 +15,9 @@ const UploadImg = multer({
 
         }
     })
+}).single("Service_file")
 
-
-}).single("user_file")
+// }).single("user_file")
 
 
 //

@@ -22,9 +22,6 @@ export function Add_Servise() {
     let [Suggestion, setsuggestion] = useState(" ")
     let [suggestionErr, setsuggestionErr] = useState(false)
     const navigate = useNavigate();
-
-
-
     function ServiceHAndler(e) {
         let Data = e.target.value;
         if (Data.length < 3) {
@@ -97,6 +94,7 @@ export function Add_Servise() {
         setsuggestion(Data)
     }
     async function CollectData() {
+        console.warn("This is Image "+Image);
         //   console.warn("hell:  "+Service, Description, Price, Duration, Image, Suggestion);
 
         let result = await fetch("http://localhost:5000/AddServises", {

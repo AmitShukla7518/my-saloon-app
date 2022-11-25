@@ -7,6 +7,18 @@ img{
     background: radial-gradient(#653d84, #332042);
     /* position: relative; */
 }
+.myselectlabel{
+  display: block;
+
+}
+.mySelect{
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+}
+
 .login_box {
     /* width: 1050px; */
     height: 600px;

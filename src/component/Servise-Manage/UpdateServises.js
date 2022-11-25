@@ -78,9 +78,9 @@ export default function UpdateServises() {
 								<label> Active Status</label>
 								<input type="text" value={Active} readOnly />
 								<label> <b>Discount</b></label>
-								<input type="Number"  placeholder='Enter Discount Value' onChange={(e) => { setDiscount(e.target.value) }} />
+								<input type="number"  placeholder='Enter Discount Value' onChange={(e) => { setDiscount(e.target.value) }} />
 								<label> <b>Flat</b></label>
-								<input type="Number" placeholder='Enter Flat Value' onChange={(e) => { setFlat(e.target.value) }} />
+								<input type="number" placeholder='Enter Flat Value' onChange={(e) => { setFlat(e.target.value) }} />
 								<button type="button" className="submit" onClick={CollectData}>Update</button>
 							</form>
 						</div>

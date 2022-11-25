@@ -7,20 +7,13 @@ export default function Header() {
     const navigate = useNavigate();
 
     const ShowName = localStorage.getItem('Name')
-
-
-
     const LogoutHandler = () => {
         localStorage.clear();
-        navigate('/signup')
+        navigate('/Login')
     }
-
-
-
-
     const LogoutHandler2 = () => {
         localStorage.clear();
-        navigate('/signup')
+        navigate('/Login')
     }
     return (
         <div>
@@ -224,7 +217,7 @@ export default function Header() {
                                                             data-toggle="dropdown" data-hover="dropdown"
                                                             data-close-others="true" aria-expanded="true">
                                                             <img className="img-circle pro_pic" src="assets/images/about-1.jpg" alt="" />
-                                                            <span className="name_admin">{ShowName}<i className="fa fa-angle-down" aria-hidden="true"></i></span>
+                                                            <span className="name_admin"> {ShowName}<i className="fa fa-angle-down" aria-hidden="true"></i></span>
                                                         </Link>
 
                                                         <ul className="dropdown-menu dropdown-menu-default">
@@ -243,8 +236,7 @@ export default function Header() {
                                                                 </Link>
                                                             </li>
                                                             <li>
-                                                                <Link to="/SingUP" > <i className="icon-logout" onClick={LogoutHandler}></i> Log Out </Link>
-
+                                                                <Link to="/Login" > <i className="icon-logout" onClick={LogoutHandler}></i> Log Out </Link>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -284,12 +276,12 @@ export default function Header() {
                                                                 <li>
                                                                     <Link to="/Manage-Store">Manage Store</Link>
                                                                 </li>
-                                                                <li>
+                                                                {/* <li>
                                                                     <Link to="/Sales Filter">Store Sales By Filter</Link>
                                                                 </li>
                                                                 <li>
                                                                     <Link to="/Store Votes">Store Votes</Link>
-                                                                </li>
+                                                                </li> */}
                                                             </ul>
                                                         </li>
 
@@ -309,12 +301,12 @@ export default function Header() {
                                                                 <li>
                                                                     <Link to="/Manage-Staff">Manage Staff</Link>
                                                                 </li>
-                                                                <li>
+                                                                {/* <li>
                                                                     <Link to="/STaff Filter">Show Staff by Filter</Link>
                                                                 </li>
                                                                 <li>
                                                                     <Link to="/Staff Votes">Retting Staff</Link>
-                                                                </li>
+                                                                </li> */}
                                                             </ul>
                                                         </li>
                                                         {/* <li className="menu_sub">
@@ -351,12 +343,12 @@ export default function Header() {
                                                                 <li>
                                                                     <a href="portlet-advanced.html">Show Item</a>
                                                                 </li>
-                                                                <li>
+                                                                {/* <li>
                                                                     <a href="portlet-advanced.html">Show item  By Filter</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="portlet-advanced.html">Item Quantity</a>
-                                                                </li>
+                                                                </li> */}
                                                             </ul>
 
                                                         </li>
