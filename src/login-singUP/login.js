@@ -102,11 +102,7 @@ export default function Login() {
                                             <i className="fa fa-twitter"></i>Sign in with twitter</button>
                                     </div>
                                 </div>
-                                <div className="register-link m-t-15 text-center">
-                                    <p>Don't have account ?
-                                        <Link to="/SingUP"> Sign Up Here</Link>
-                                    </p>
-                                </div>
+
                             </form>
                         </div>
                     </div>

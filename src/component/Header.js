@@ -6,7 +6,9 @@ import Login from '../login-singUP/login';
 export default function Header() {
     const navigate = useNavigate();
 
-    const ShowName = localStorage.getItem('Name')
+    let ShowName = localStorage.getItem('Name')
+    ShowName = ShowName.replace(/^"(.+)"$/, '$1');
+
     const LogoutHandler = () => {
         localStorage.clear();
         navigate('/Login')
@@ -217,7 +219,7 @@ export default function Header() {
                                                             data-toggle="dropdown" data-hover="dropdown"
                                                             data-close-others="true" aria-expanded="true">
                                                             <img className="img-circle pro_pic" src="assets/images/about-1.jpg" alt="" />
-                                                            <span className="name_admin"> {ShowName}<i className="fa fa-angle-down" aria-hidden="true"></i></span>
+                                                            <span className="name_admin"> {ShowName} <i className="fa fa-angle-down" aria-hidden="true"></i> </span>
                                                         </Link>
 
                                                         <ul className="dropdown-menu dropdown-menu-default">
@@ -338,7 +340,7 @@ export default function Header() {
                                                                 className="arrow"></span> </a>
                                                             <ul className="down_menu">
                                                                 <li>
-                                                                    <a href="portlet-base.html">Add Item</a>
+                                                                    <Link to="/Add-Invo">Add Item</Link>
                                                                 </li>
                                                                 <li>
                                                                     <a href="portlet-advanced.html">Show Item</a>

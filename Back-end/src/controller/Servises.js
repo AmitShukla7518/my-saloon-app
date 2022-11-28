@@ -18,8 +18,6 @@ const UploadImg = multer({
 }).single("Service_file")
 
 // }).single("user_file")
-
-
 //
 
 //
@@ -37,13 +35,13 @@ const Add_Servise = (req, res, next) => {
 }
 
 const GetServises = (req, res) => {
+
     let Sqlquery = "select *from tbl_Servises"
     con.query(Sqlquery, (err, result) => {
         if (err) throw err;
-        for (var a = 0; a < result.length; a++) {
-            
-            console.log({ SCode:result[a].SCode});
-        }
+        // for (var a = 0; a < result.length; a++) {
+        //     console.log({ SCode:result[a].SCode});
+        // }
         return res.send(result)
     })
 }
@@ -53,7 +51,7 @@ const GetServisesByID = (req, res) => {
     let Sqlquery = "select *from tbl_Servises where SCode = " + SCode + ""
     con.query(Sqlquery, (err, result) => {
         if (err) throw err;
-        console.log(result);
+
         for (var a = 0; a < result.length; a++) {
             res.send({ SCode: result[a].SCode, Service: result[a].Service, Price: result[a].Price, Discount: result[a].Discount, Flat: result[a].Flat, Active: result[a].Active });
         }
@@ -62,9 +60,13 @@ const GetServisesByID = (req, res) => {
 const UpdateServices = (req, res) => {
     let SCode = req.params.SCode;
     let Data = req.body;
+   
+console.log(UpdateAT);
+
     Data = {
         Discount: req.body.Discount,
-        Flat: req.body.Flat
+        Flat: req.body.Flat,
+       
     }
     console.log(Data);
     let Sqlquery = "UPDATE tbl_Servises SET Discount = " + Data.Discount + ", flat = " + Data.Flat + " WHERE SCode = " + SCode + ""

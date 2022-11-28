@@ -7,19 +7,10 @@ export const PrivateComponent = () => {
     return Admin ? <Outlet />
    : user ? <Outlet/>
 
-    : <Navigate to="SingUP" />
+    : <Navigate to="/login" />
 }
 
 
-
-
-
-/* export const PrivateComponent= ()=>{
-    const auth = localStorage.getItem('user');
-
-    return auth ?<Outlet />:<Navigate to="SingUP" />
-} */
-// export default PrivateComponent
 
 
 

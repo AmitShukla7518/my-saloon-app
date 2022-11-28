@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './component/Header';
 import Footer from './component/footer';
 import RYTCOntent from './component/RYTContent';
-import Ragister from './login-singUP/Ragister';
+// import Ragister from './login-singUP/Ragister';
 import Login from './login-singUP/login';
 import React from 'react';
 import { PrivateComponent } from './PrivateCompo/PrivateComponent';
@@ -18,6 +18,7 @@ import Manage_Staff from './component/Staff-Manage/Manage-Staff';
 import { Add_Servise } from './component/Servise-Manage/AddServise';
 import Manage_servises from './component/Servise-Manage/Manage-Servises';
 import UpdateServises from './component/Servise-Manage/UpdateServises';
+import AddInovo from './component/Inoventry-Manage/Add-Inovo';
 function App() {
   return (
 
@@ -28,7 +29,7 @@ function App() {
 
         {/* Admin Panal Button */}
         <Route path='/Login' element={<Login />} />
-        <Route path='/SingUP' element={<Ragister />} />
+        {/* <Route path='/SingUP' element={<Ragister />} /> */}
 
         {/* </Routes> */}
 
@@ -63,10 +64,14 @@ function App() {
           <Route path='/Manage-services' element={<Manage_servises />} />
           <Route path="/UpdateServises/:Scode" element={<UpdateServises />} />
 
+          {/*Manage Inoventry */}
+          <Route path='/Add-Invo' element={<AddInovo/>} />
+
+    
 
 
 
-
+          
 
 
 

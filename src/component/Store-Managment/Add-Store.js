@@ -52,7 +52,6 @@ export function Add_Store() {
         else {
             SetDescriptionErr(false)
         }
-
         SetDescription(Data)
     }
 
@@ -65,8 +64,8 @@ export function Add_Store() {
         if (!image.name.match(/\.(jpg|jpeg|png|gif)$/)) {
             setImageErr(true)
         } else {
-            let reader = new FileReader()
-            reader.readAsDataURL(e.target.files[0])
+            // let reader = new FileReader()
+            // reader.readAsDataURL(e.target.files[0])
             setStores_file(image)
             setImageErr(false)
         }
@@ -101,18 +100,20 @@ export function Add_Store() {
 
 
     async function collectData() {
-        // console.warn(StoreName + " " + Description + " " + ContectNO + " " + Address + " " + Stores_file + " " + Timeing);
+        // console.log(Stores_file);
+        const Body = new FormData();
+        Body.append('StoreName', StoreName)
+        Body.append('Description', Description)
+        Body.append('ContectNO', ContectNO)
+        Body.append('Address', Address)
+        Body.append('Stores_file', Stores_file)
+        Body.append('Timeing', Timeing)
+       
         let result = await fetch("http://localhost:5000/addStore", {
             method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin',
-            body: JSON.stringify({ StoreName,Description,ContectNO,Address,Stores_file,Timeing }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+             body: Body
         });
         result = (await result).json();
-        console.warn(result);
         if (result) {
             navigate("/Manage-Store")
         }
@@ -130,7 +131,7 @@ export function Add_Store() {
                         </div>
                     </div>
                     <div className="card-body">
-                        <form className="container-fluid" id="needs-validation" >
+                        <form className="container-fluid" method="Post" encType="multipart/form-data" action="http://localhost:5000/addStore">
                             <div className="row">
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label" htmlFor="form3Example1m"> <b>Store Name</b></label>
@@ -163,7 +164,7 @@ export function Add_Store() {
                             <div className="row">
                                 <label className="custom-file1">
 
-                                    <input type="file" id="file2" className="custom-file-input" onChange={ImageHandler} />
+                                    <input type="file" className="custom-file-input" onChange={ImageHandler} />
                                     <span className="custom-file-control">Upload Image....</span></label>
                                 {ImageError ? <span style={{ color: 'red' }}>Please Upload Valid Image Format</span> : ""}
 

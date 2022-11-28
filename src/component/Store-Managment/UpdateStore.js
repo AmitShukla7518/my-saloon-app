@@ -33,7 +33,7 @@ export default function UpdateStore() {
 
 		let result = fetch(`http://localhost:5000/UpdateStore/${params.StoreCode}`, {
 			method: 'PUT',
-			body: JSON.stringify({ StoreName, ContectNO,Timeing,Active }),
+			body: JSON.stringify({ StoreName, ContectNO, Timeing, Active }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -55,18 +55,17 @@ export default function UpdateStore() {
 							<form >
 								<h1 className="Lable"><b>Update Store </b></h1><br />
 								<label><b> Store Name </b></label>
-								<input type="text" value={StoreName}  onChange={(e) => { SetStoreName(e.target.value) }} />
+								<input type="text" value={StoreName} onChange={(e) => { SetStoreName(e.target.value) }} />
 								<label> <b>Contact Number</b></label>
-								<input type="text" value={ContectNO} onChange={(e) => { setContectNO(e.target.value) }}/>
+								<input type="text" value={ContectNO} onChange={(e) => { setContectNO(e.target.value) }} />
 								<label><b> Timing</b></label>
-								<input type="text" value={Timeing}  onChange={(e) => { setTimeing(e.target.value) }}/>
+								<input type="text" value={Timeing} onChange={(e) => { setTimeing(e.target.value) }} />
 								<label className='myselectlabel'><b>Active Status</b> </label>
 								<select className='mySelect' onChange={(e) => { setActive(e.target.value) }}>
 									<option value={Active}>{Active}</option>
 									<option Value="No">No</option>
 									<option Value="Yes">Yes</option>
 								</select>
-
 								<button type="button" className="submit" onClick={CollectData}>Update</button>
 							</form>
 						</div>

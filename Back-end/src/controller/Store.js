@@ -5,12 +5,14 @@ const bcrypt = require('bcrypt');
 const token = "SPASaloon"
 const Validation = require("../Validation/Validation");
 const multer = require('multer');
-var Image;
+const upload = multer({ dest: "uploads/" });
+var Busboy = require('busboy');
 
+var Image;
 const UploadImg = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, "Uploads/Stores/")
+            cb(null, "Uploads/Stores/");
         },
         filename: function (req, file, cb) {
             cb(null, file.fieldname + Date.now() + ".jpg")
@@ -77,16 +79,22 @@ const DeleteStore = (req, res) => {
 const UpdateStore = (req, res) => {
     let StoreCode = req.params.StoreCode;
     let Data = req.body;
+    let UpdateAT  = new Date();
+    UpdateAT  = UpdateAT.toLocaleString();
+    UpdateAT =  UpdateAT.replaceAll(',', '');
+    console.log(UpdateAT);
+
     Data = [
         req.body.StoreName,
         req.body.ContectNO,
         req.body.Timeing,
         req.body.Active,
+        UpdateAT
 
     ]
-
+   
     console.log(Data);
-    let Sqlquery = "UPDATE tbl_store SET StoreName =?,ContectNO =?,Timeing =?,Active =? WHERE StoreCode = " + StoreCode + ""
+    let Sqlquery = "UPDATE tbl_store SET StoreName =?,ContectNO =?,Timeing =?,Active =?,UpdateAT=? WHERE StoreCode = " + StoreCode + ""
 
     //let Sqlquery = "UPDATE tbl_store SET ? WHERE UserID = ?"
     con.query(Sqlquery, Data, (err, result) => {
