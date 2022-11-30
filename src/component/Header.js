@@ -343,14 +343,11 @@ export default function Header() {
                                                                     <Link to="/Add-Invo">Add Item</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="portlet-advanced.html">Show Item</a>
-                                                                </li>
-                                                                {/* <li>
-                                                                    <a href="portlet-advanced.html">Show item  By Filter</a>
+                                                                    <a href="/Manage_Invo">Manage Inoventry</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="portlet-advanced.html">Item Quantity</a>
-                                                                </li> */}
+                                                                    <Link to="/AddCatagary">Add Catagary</Link>
+                                                                </li>
                                                             </ul>
 
                                                         </li>

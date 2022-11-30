@@ -8,6 +8,11 @@ var multer = require('multer');
 const port = 5000;
 const cores = require('cors');
 const app = express()
+
+// app.use('/',express.static('Uploads/Servises'))
+app.use('/Uploads/Invo',express.static('Uploads/Invo'))
+// app.use('/',express.static('Uploads'))
+
 app.use(express.json());
 app.use(cores())
 // app.use(bodyParser()) 

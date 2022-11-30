@@ -32,8 +32,8 @@ export function Add_Staff() {
     let [AddressErr, SetAddressErr] = useState(false)
 
 
-    let value =Password;
-    
+    let value = Password;
+
 
 
 
@@ -166,7 +166,7 @@ export function Add_Staff() {
             alert(" Please enter correct field")
         } else {
 
-            
+
             const salt = await bcrypt.genSalt(10);
             FirstName = await bcrypt.hash(FirstName, salt);
             LastName = await bcrypt.hash(LastName, salt);
@@ -319,7 +319,6 @@ export function Add_Staff() {
 
                     </div>
                 </div>
-
             </section>
             <Footer />
         </div>

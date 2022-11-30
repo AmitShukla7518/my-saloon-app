@@ -2,6 +2,7 @@ const express = require('express');
 const con = require('../conn/conn');
 const Validation = require("../Validation/Validation");
 var multer = require('multer');
+var Image;
 const UploadImg = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
@@ -10,7 +11,7 @@ const UploadImg = multer({
         filename: function (req, file, cb) {
 
             cb(null, file.fieldname + Date.now() + ".jpg")
-            Image = file.fieldname + "" + Date.now() + ".jpg"
+            Image = "Uploads/Servises/" + file.fieldname + "" + Date.now() + ".jpg"
 
 
         }
@@ -51,7 +52,6 @@ const GetServisesByID = (req, res) => {
     let Sqlquery = "select *from tbl_Servises where SCode = " + SCode + ""
     con.query(Sqlquery, (err, result) => {
         if (err) throw err;
-
         for (var a = 0; a < result.length; a++) {
             res.send({ SCode: result[a].SCode, Service: result[a].Service, Price: result[a].Price, Discount: result[a].Discount, Flat: result[a].Flat, Active: result[a].Active });
         }
@@ -60,13 +60,9 @@ const GetServisesByID = (req, res) => {
 const UpdateServices = (req, res) => {
     let SCode = req.params.SCode;
     let Data = req.body;
-   
-console.log(UpdateAT);
-
     Data = {
         Discount: req.body.Discount,
         Flat: req.body.Flat,
-       
     }
     console.log(Data);
     let Sqlquery = "UPDATE tbl_Servises SET Discount = " + Data.Discount + ", flat = " + Data.Flat + " WHERE SCode = " + SCode + ""

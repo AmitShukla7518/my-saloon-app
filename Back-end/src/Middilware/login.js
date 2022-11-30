@@ -37,8 +37,8 @@ const Login = async (req, res, next) => {
 }
 const VarifyToken = async (req, res, next) => {
     try {
-        let Token = req.headers["x-auth-token"]
-
+        let Token = req.headers["authorization"]
+        
         let DecodeToken = await jwt.verify(Token, jwttoken, { expiresIn: '3600s' })
         if (!DecodeToken) {
             return res.status(400).send({ status: false, msg: "Token is Invalid" })

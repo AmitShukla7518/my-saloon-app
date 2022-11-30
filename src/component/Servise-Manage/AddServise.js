@@ -94,22 +94,25 @@ export function Add_Servise() {
         setsuggestion(Data)
     }
     async function CollectData() {
-        console.warn("This is Image "+Image);
-        //   console.warn("hell:  "+Service, Description, Price, Duration, Image, Suggestion);
+
+
+        const Body = new FormData();
+
+        Body.append('Service', Service)
+        Body.append('Description', Description)
+        Body.append('Price', Price)
+        Body.append('Duration', Duration)
+        Body.append('Image', Image)
+        Body.append('Suggestion', Suggestion)
 
         let result = await fetch("http://localhost:5000/AddServises", {
             method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin',
-            body: JSON.stringify({ Service, Description, Price, Duration, Image, Suggestion }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            body: Body
         });
         result = (await result).json();
         console.warn(result);
         if (result) {
-            navigate("/Manage-services")
+            // navigate("/Manage-services")
         }
     }
     return (

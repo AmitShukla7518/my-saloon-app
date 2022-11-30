@@ -9,12 +9,6 @@ import RYTCOntent from '../RYTContent';
 import validator from 'validator'
 import "./Store.css"
 
-
-
-
-
-
-
 export default function Manage_Store() {
     const navigate = useNavigate();
 
@@ -22,23 +16,33 @@ export default function Manage_Store() {
     let [AllServises, SetAllServises] = useState("NA");
     let [ALlDiscount, SetALlDiscount] = useState("NA")
     let [SID, SetSID] = useState()
-   
+
 
     useEffect(() => {
         GetServises()
     }, []);
 
     const GetServises = async () => {
-        let result = await fetch('http://localhost:5000/GetAllStore');
+        let result = await fetch('http://localhost:5000/GetAllStore', {
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
+        });
         result = await result.json();
-
         SetServiceList(result);
         SetAllServises(result.length);
+
+
+        
+
 
     }
     const DeleteServices = async (StoreCode) => {
         let result = await fetch(`http://localhost:5000/DeleteStore/${StoreCode}`, {
-            method: "Delete"
+            method: "Delete",
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
         });
         result = await result.json();
         if (result) {
@@ -134,12 +138,12 @@ export default function Manage_Store() {
                                         </td>
                                         <td>
 
-                                            <button type="button" className="btn  btn-dark" onClick={() => navigate("/UpdateStore/"+item.StoreCode)}>
+                                            <button type="button" className="btn  btn-dark" onClick={() => navigate("/UpdateStore/" + item.StoreCode)}>
                                                 <i className="icon-note "></i>
                                             </button>
                                             {/* <button type="button" className="btn  btn-dark" onClick={() => UpdateServise(item.SCode)}>
-                                                <i className="icon-note "></i>
-                                            </button> */}
+                                            <i className="icon-note "></i>
+                                        </button> */}
                                         </td>
                                     </tr>
                                 )
@@ -151,6 +155,5 @@ export default function Manage_Store() {
             </div>
             <Footer />
         </div>
-
     )
 }

@@ -19,6 +19,8 @@ import { Add_Servise } from './component/Servise-Manage/AddServise';
 import Manage_servises from './component/Servise-Manage/Manage-Servises';
 import UpdateServises from './component/Servise-Manage/UpdateServises';
 import AddInovo from './component/Inoventry-Manage/Add-Inovo';
+import Manage_Invo from './component/Inoventry-Manage/Manage-Inovo';
+import AddCatagary from './component/Inoventry-Manage/AddCatagary';
 function App() {
   return (
 
@@ -66,6 +68,8 @@ function App() {
 
           {/*Manage Inoventry */}
           <Route path='/Add-Invo' element={<AddInovo/>} />
+          <Route path="/Manage_Invo" element={<Manage_Invo/>} />
+          <Route path="/AddCatagary" element={<AddCatagary/>} />
 
     
 

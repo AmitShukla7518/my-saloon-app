@@ -1,10 +1,14 @@
 
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'
 import Header from "../Header";
 import Footer from '../footer';
 import "./Ino.css"
-export default function AddInovo() {
+export default function AddCatagary() {
 
     let [ItemName, setItemName] = useState(" ")
     let [Discription, setDiscription] = useState(" ")
@@ -125,14 +129,8 @@ export default function AddInovo() {
                         <div className="col-md-3 mb-3">
                             <label htmlFor="validationCustom05"><b>category</b></label>
                             <div class="dropdown mb-4">
-                                <select class="btn btn-outline-secondary dropdown-toggle OurSelect" onChange={categoryHandler}>
-                                    <option >select category</option>
-                                    <option value="Retails Product">Retails Product </option>
-                                    <option value="Cleaning Product">Cleaning Product</option>
-                                    <option value="Hair Product">Hair Product</option>
-                                    <option value="Beauty Product">Beauty Product</option>
-                                    <option value="Massage Product">Massage Product</option>
-                                </select>
+                                <input type="text" className="form-control" placeholder="category"
+                                    onChange={categoryHandler} required />
 
                             </div>
 
