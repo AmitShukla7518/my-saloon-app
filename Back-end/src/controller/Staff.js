@@ -7,7 +7,7 @@ const Validation = require("../Validation/Validation");
 // const { validate } = require('email-validator');
 
 const AddStaff = async (req, res, next) => {
- 
+
     let Data = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
@@ -20,7 +20,7 @@ const AddStaff = async (req, res, next) => {
         Email: req.body.Email,
         Password: req.body.Password,
     }
- if (!Validation.isValid(Data.FirstName)) {
+    if (!Validation.isValid(Data.FirstName)) {
         return res.status(400).send({ status: false, message: "Please provide First Name field 🛑" });
     }
     if (!Validation.isValid(Data.LastName)) {
@@ -60,9 +60,9 @@ const AddStaff = async (req, res, next) => {
         return res.status(400).send({ status: false, message: "Please provide alternative Email " })
     }
 
-//
+    //
 
-//
+    //
     if (!Validation.isValid(Data.Password)) {
         return res.status(400).send({ status: false, message: "Please provide Password  field 🛑" });
     }
@@ -120,7 +120,6 @@ const SearchEMP = (req, res) => {
     })
 
 }
-
 
 module.exports = {
     AddStaff,

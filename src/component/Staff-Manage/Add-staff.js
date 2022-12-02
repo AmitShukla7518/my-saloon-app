@@ -30,9 +30,8 @@ export function Add_Staff() {
     let [ConfirmPasswordError, setConfirmPasswordErr] = useState(false)
     let [Address, SetAddress] = useState(" ")
     let [AddressErr, SetAddressErr] = useState(false)
-
-
     let value = Password;
+    const navigate = useNavigate();
 
 
 
@@ -167,32 +166,38 @@ export function Add_Staff() {
         } else {
 
 
-            const salt = await bcrypt.genSalt(10);
-            FirstName = await bcrypt.hash(FirstName, salt);
-            LastName = await bcrypt.hash(LastName, salt);
-            Gender = await bcrypt.hash(Gender, salt);
-            DOB = await bcrypt.hash(DOB, salt);
-            BooldGRP = await bcrypt.hash(BooldGRP, salt);
-            MobileNo = await bcrypt.hash(MobileNo, salt);
-            Pan_Adhar = await bcrypt.hash(Pan_Adhar, salt);
-            Address = await bcrypt.hash(Address, salt);
-            Email = await bcrypt.hash(Email, salt);
-            Password = await bcrypt.hash(Password, salt);
+            // const salt = await bcrypt.genSalt(10);
+            // FirstName = await bcrypt.hash(FirstName, salt);
+            // LastName = await bcrypt.hash(LastName, salt);
+            // Gender = await bcrypt.hash(Gender, salt);
+            // DOB = await bcrypt.hash(DOB, salt);
+            // BooldGRP = await bcrypt.hash(BooldGRP, salt);
+            // MobileNo = await bcrypt.hash(MobileNo, salt);
+            // Pan_Adhar = await bcrypt.hash(Pan_Adhar, salt);
+            // Address = await bcrypt.hash(Address, salt);
+            // Email = await bcrypt.hash(Email, salt);
+            // Password = await bcrypt.hash(Password, salt);
 
             console.warn(FirstName, LastName, Gender, DOB, BooldGRP, MobileNo, Pan_Adhar, Address, Email, Password);
             let result = await fetch("http://localhost:5000/AddStaff", {
                 method: 'post',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json'
+
+                },
                 credentials: 'same-origin',
                 body: JSON.stringify({ FirstName, LastName, Gender, DOB, BooldGRP, MobileNo, Pan_Adhar, Address, Email, Password }),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    authorization: JSON.parse(localStorage.getItem("Admin_Token"))
                 }
             });
             result = await result.json();
-            console.warn(result.result);
-            alert(" Data saved");
-            // navigate("/")
+            if (result) {
+                // alert(" Data saved");
+                navigate("/Manage-Staff")
+            }
+
 
         }
 

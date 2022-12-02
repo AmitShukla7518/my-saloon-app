@@ -28,7 +28,11 @@ export default function Manage_servises() {
     }, []);
 
     const GetServises = async () => {
-        let result = await fetch('http://localhost:5000/GetServises');
+        let result = await fetch('http://localhost:5000/GetServises',{
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
+        });
         result = await result.json();
 
         SetServiceList(result);
@@ -38,7 +42,10 @@ export default function Manage_servises() {
 
     const DeleteServices = async (SCode) => {
         let result = await fetch(`http://localhost:5000/DeleteService/${SCode}`, {
-            method: "Delete"
+            method: "Delete",
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
         });
         result = await result.json();
         if (result) {

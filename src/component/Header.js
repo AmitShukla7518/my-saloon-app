@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'
 import Ragister from '../login-singUP/Ragister';
 import Login from '../login-singUP/login';
@@ -6,9 +6,10 @@ import Login from '../login-singUP/login';
 export default function Header() {
     const navigate = useNavigate();
 
+   
+
     let ShowName = localStorage.getItem('Name')
     ShowName = ShowName.replace(/^"(.+)"$/, '$1');
-
     const LogoutHandler = () => {
         localStorage.clear();
         navigate('/Login')
@@ -311,28 +312,21 @@ export default function Header() {
                                                                 </li> */}
                                                             </ul>
                                                         </li>
-                                                        {/* <li className="menu_sub">
-<a href="table-basic.html"> <i className="icon-grid"></i> <span>View Booking</span></a>
-</li> */}
+
                                                         <li className="menu_sub">
                                                             <a href="#"> <i className="fa fa-list"></i> <span>Manage Booking</span> <span
                                                                 className="arrow"></span> </a>
                                                             <ul className="down_menu">
                                                                 <li>
-                                                                    <Link to="/Booking status">Booking Status</Link>
+                                                                    <Link to="/Booking status">Manage All Booking</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Total Booking">Total Booking </Link>
+                                                                    <Link to="/Total Booking">Panding Booking</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Cancled Booking">Canceled Booking</Link>
+                                                                    <Link to="/Total Booking">Complited Booking</Link>
                                                                 </li>
-                                                                <li>
-                                                                    <Link to="/Direct Booking">Direct Booking Entry</Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Booking CheckOut"> Booking CheckOut</Link>
-                                                                </li>
+
                                                             </ul>
                                                         </li>
                                                         <li className="menu_sub">
@@ -411,19 +405,10 @@ export default function Header() {
                                                                 className="arrow"></span> </a>
                                                             <ul className="down_menu">
                                                                 <li>
-                                                                    <Link to="/Booking status">Booking Status</Link>
+                                                                    <Link to="/Booking status">Manage Booking</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Total Booking">Total Booking </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Cancled Booking">Canceled Booking</Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Direct Booking">Ongoing Booking </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link to="/Booking CheckOut"> Booking CheckOut</Link>
+                                                                    <Link to="/Total Booking">Complited  Booking </Link>
                                                                 </li>
                                                             </ul>
                                                         </li>
@@ -447,7 +432,7 @@ export default function Header() {
 
                                                         </li>
                                                         <li>
-                                                            <Link> <i className="icon-logout" onClick={LogoutHandler2}> </i> <span>LogOut</span> </Link>
+                                                            <Link> <i className="icon-logout" onClick={LogoutHandler}> </i> <span>LogOut</span> </Link>
                                                         </li>
                                                     </ul>
 

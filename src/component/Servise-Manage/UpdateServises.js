@@ -47,17 +47,18 @@ export default function UpdateServises() {
 
 
 	async function CollectData() {
-		
+
 		let result = fetch(`http://localhost:5000/UpdateServices/${params.Scode}`, {
 			method: 'PUT',
 			body: JSON.stringify({ Discount, Flat }),
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				authorization: JSON.parse(localStorage.getItem("Admin_Token"))
 			}
 		})
-		
-		result =(await result).json()
-			navigate('/Manage-services')
+
+		result = (await result).json()
+		navigate('/Manage-services')
 
 	}
 	return (
@@ -78,7 +79,7 @@ export default function UpdateServises() {
 								<label> Active Status</label>
 								<input type="text" value={Active} readOnly />
 								<label> <b>Discount</b></label>
-								<input type="number"  placeholder='Enter Discount Value' onChange={(e) => { setDiscount(e.target.value) }} />
+								<input type="number" placeholder='Enter Discount Value' onChange={(e) => { setDiscount(e.target.value) }} />
 								<label> <b>Flat</b></label>
 								<input type="number" placeholder='Enter Flat Value' onChange={(e) => { setFlat(e.target.value) }} />
 								<button type="button" className="submit" onClick={CollectData}>Update</button>

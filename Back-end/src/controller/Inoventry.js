@@ -9,17 +9,11 @@ const UploadImg = multer({
             cb(null, "Uploads/Invo")
         },
         filename: function (req, file, cb) {
-
-            cb(null, file.fieldname + Date.now() + ".jpg")
+            cb(null, file.fieldname +Date.now()+ ".jpg")
             Image = file.fieldname + "" + Date.now() + ".jpg"
-
-}
+        }
     })
 }).single("Inovo_file")
-
-
-
-
 
 const Add_Inovo = (req, res, next) => {
     let Data = req.body;
@@ -38,8 +32,6 @@ const Add_Inovo = (req, res, next) => {
     Quantity varchar (50),
     Inovo_file varchar(100),
      */
-
-
     console.log(Data);
     let SQLQuery = "INSERT INTO tbl_Invo (ItemName,Discription,Brand,IdealFor,category,ExpiryDate,Quantity,Inovo_file) values(?,?,?,?,?,?,?,?)"
     con.query(SQLQuery, Data, function (err, result) {
@@ -47,9 +39,9 @@ const Add_Inovo = (req, res, next) => {
         console.log(result);
         // return res.send("Data Successfully Store In Database");
         res.status(200).json({
-Data:{
-    File: `${req.protocol}://${req.get("host")}/${Image}`
-}
+            Data: {
+                File: `${req.protocol}://${req.get("host")}/${Image}`
+            }
 
 
 

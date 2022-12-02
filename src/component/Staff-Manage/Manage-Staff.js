@@ -16,19 +16,22 @@ export default function Manage_Staff() {
     }, []);
 
     const getEMPList = async () => {
-        let result = await fetch('http://localhost:5000/GetEmpList');
+        let result = await fetch('http://localhost:5000/GetEmpList', {
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
+        });
         result = await result.json();
         setEMPList(result);
         setALLEMP(result.length);
-
-
-
     }
-
-   const DeleteEMP = async (EmpCode) => {
+    const DeleteEMP = async (EmpCode) => {
         console.warn(EmpCode)
         let result = await fetch(`http://localhost:5000/DeleteEMP/${EmpCode}`, {
-            method: "Delete"
+            method: "Delete",
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
         });
         result = await result.json();
         if (result) {

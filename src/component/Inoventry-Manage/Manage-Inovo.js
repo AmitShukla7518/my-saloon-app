@@ -11,13 +11,17 @@ export default function Manage_Invo() {
     }, []);
 
     const GetInvo = async () => {
-        let result = await fetch('http://localhost:5000/GetInovenory');
+        let result = await fetch('http://localhost:5000/GetInovenory',{
+        headers:{
+            authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+        }
+    });
         result = await result.json();
         SetInvoList(result)
         console.warn(InvoList);
     }
     return (
-        <div>
+        <div class="wrapper">
             <Header />
             <h1 />
             <div className="row">

@@ -201,6 +201,7 @@ z-index: 1030;
 	transform: translate3d(0px, 0px, 0px) !important;
 	visibility: visible;
 	opacity: 1;
+	overflow-y: scroll;
 }
 
 .right_bar_top .dropdown-menu:before {
@@ -259,7 +260,7 @@ z-index: 1030;
 	max-width: 355px;
 	width: 355px;
 	z-index: 9995;
-	height: 300px;
+	height: 313px;
 }
 
 .dropdown-notification .dropdown-menu .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, .dropdown-inbox .dropdown-menu .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {

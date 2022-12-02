@@ -107,7 +107,10 @@ export function Add_Servise() {
 
         let result = await fetch("http://localhost:5000/AddServises", {
             method: 'post',
-            body: Body
+            body: Body,
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
         });
         result = (await result).json();
         console.warn(result);

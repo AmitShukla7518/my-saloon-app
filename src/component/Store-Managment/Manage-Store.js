@@ -33,7 +33,7 @@ export default function Manage_Store() {
         SetAllServises(result.length);
 
 
-        
+
 
 
     }

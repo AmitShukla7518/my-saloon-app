@@ -52,8 +52,7 @@ export default function AddInovo() {
         if (!image.name.match(/\.(jpg|jpeg|png|gif)$/)) {
             setImageErr(true)
         } else {
-            // let reader = new FileReader()
-            // reader.readAsDataURL(e.target.files[0])
+           
             setInovo_file(image)
             setImageErr(false)
         }
@@ -88,7 +87,7 @@ export default function AddInovo() {
 
 
     return (
-        <div>
+        <div class="wrapper">
             <Header />
             <div className="card card-shadow mb-4">
                 <div className="card-header">

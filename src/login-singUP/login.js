@@ -51,24 +51,16 @@ export default function Login() {
                 localStorage.setItem('Admin_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));
                 console.warn(result.Name);
-                var ClearSession = setTimeout(clearLocalStorage,3600);
-                function clearLocalStorage() {
-                    alet("cbhjsd")
-                    localStorage.clear();
-
-                }
                 navigate("/")
+
 
             } else if (result.UserType == "Staff" && result.ActiveStatus == "Yes") {
                 localStorage.setItem("user", JSON.stringify(result.UserType));
                 localStorage.setItem('token_Token', JSON.stringify(result.auth));
                 localStorage.setItem('Name', JSON.stringify(result.Name));
 
-                var ClearSession = setTimeout(clearLocalStorage,3600);
-                function clearLocalStorage() {
-                    localStorage.clear();
-                    alet("cbhjsd")
-                }
+                
+
                 navigate("/")
 
 

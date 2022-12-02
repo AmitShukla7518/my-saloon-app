@@ -43,7 +43,7 @@ const GetServises = (req, res) => {
         // for (var a = 0; a < result.length; a++) {
         //     console.log({ SCode:result[a].SCode});
         // }
-        return res.send(result)
+        return res.send(result);
     })
 }
 
@@ -51,10 +51,13 @@ const GetServisesByID = (req, res) => {
     let SCode = req.params.SCode;
     let Sqlquery = "select *from tbl_Servises where SCode = " + SCode + ""
     con.query(Sqlquery, (err, result) => {
-        if (err) throw err;
+        if (err) {
+            res.status(500).send(err)
+        }else{
         for (var a = 0; a < result.length; a++) {
             res.send({ SCode: result[a].SCode, Service: result[a].Service, Price: result[a].Price, Discount: result[a].Discount, Flat: result[a].Flat, Active: result[a].Active });
         }
+    }
     });
 }
 const UpdateServices = (req, res) => {
