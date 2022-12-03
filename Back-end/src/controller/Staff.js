@@ -118,7 +118,6 @@ const SearchEMP = (req, res) => {
         res.send(result);
         console.log(result);
     })
-
 }
 
 module.exports = {

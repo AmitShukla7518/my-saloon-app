@@ -9,7 +9,7 @@ const UploadImg = multer({
             cb(null, "Uploads/Invo")
         },
         filename: function (req, file, cb) {
-            cb(null, file.fieldname +Date.now()+ ".jpg")
+            cb(null, file.fieldname + Date.now() + ".jpg")
             Image = file.fieldname + "" + Date.now() + ".jpg"
         }
     })
@@ -20,7 +20,7 @@ const Add_Inovo = (req, res, next) => {
     Data = [
         Data.ItemName, Data.Discription, Data.Brand, Data.IdealFor, Data.category, Data.ExpiryDate, Data.Quantity, Image
     ]
-    console.log(Data);
+
 
     /* 
     ItemName varchar(200),
@@ -48,12 +48,13 @@ const Add_Inovo = (req, res, next) => {
         })
 
     });
-}
+};
 
 let Get_Inovo = (req, res, next) => {
     let SQLQuery = "SELECT * FROM tbl_Invo"
     con.query(SQLQuery, function (err, result) {
         if (err) throw err;
+        let hello = 10;
         return res.send(result);
     });
 }

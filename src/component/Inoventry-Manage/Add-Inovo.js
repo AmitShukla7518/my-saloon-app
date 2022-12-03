@@ -52,7 +52,7 @@ export default function AddInovo() {
         if (!image.name.match(/\.(jpg|jpeg|png|gif)$/)) {
             setImageErr(true)
         } else {
-           
+
             setInovo_file(image)
             setImageErr(false)
         }
@@ -71,10 +71,14 @@ export default function AddInovo() {
         Body.append('Quantity', Quantity)
         Body.append('ExpiryDate', ExpiryDate)
         Body.append('Inovo_file', Inovo_file)
+        console.log("BodyBody:" + Body);
 
         let result = await fetch("http://localhost:5000/AddInnoventry", {
             method: 'post',
-            body: Body
+            body: Body,
+            headers: {
+                authorization: JSON.parse(localStorage.getItem("Admin_Token"))
+            }
         });
         result = (await result).json();
         if (result) {

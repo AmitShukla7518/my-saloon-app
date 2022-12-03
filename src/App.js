@@ -21,6 +21,10 @@ import UpdateServises from './component/Servise-Manage/UpdateServises';
 import AddInovo from './component/Inoventry-Manage/Add-Inovo';
 import Manage_Invo from './component/Inoventry-Manage/Manage-Inovo';
 import AddCatagary from './component/Inoventry-Manage/AddCatagary';
+import Manage_Booking from './component/Manage-Booking/ManageBooking';
+import CancelledBooking from './component/Manage-Booking/CancelledBooking';
+import PandingBooking from './component/Manage-Booking/PandingBooking';
+import ComplitedBooking from './component/Manage-Booking/Complited';
 function App() {
   return (
 
@@ -55,17 +59,17 @@ function App() {
           <Route path='/STaff Filter' element={<h1> Walcome to Sales Staff</h1>} />
           <Route path='/Staff Votes' element={<h1> Walcome to VIsite Staff Ratting</h1>} />
           {/* Manage Booking Button */}
-          <Route path='/Booking status' element={<h1> Booking Status</h1>} />
-          <Route path='/Total Booking' element={<h1> Total booking</h1>} />
-          <Route path='/Cancled Booking' element={<h1> Canceled  Booking</h1>} />
-          <Route path='/Direct Booking' element={<h1> Direct Booking Entry </h1>} />
+          <Route path='/Manage_Booking' element={<Manage_Booking/>}/>
+          <Route path='/ComplitedBooking' element={<ComplitedBooking/>} />
+          <Route path='/PandingBooking'  element={<PandingBooking/>}/>
+          <Route path='/CancelledBooking' element={<CancelledBooking/>}/>
           <Route path='/Booking CheckOut' element={<h1>  Booking CheckOut </h1>} />
 
           {/*Manage Servises */}
           <Route path='/Add-Servises' element={<Add_Servise />} />
           <Route path='/Manage-services' element={<Manage_servises />} />
           <Route path="/UpdateServises/:Scode" element={<UpdateServises />} />
-
+         
           {/*Manage Inoventry */}
           <Route path='/Add-Invo' element={<AddInovo/>} />
           <Route path="/Manage_Invo" element={<Manage_Invo/>} />

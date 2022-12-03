@@ -55,7 +55,7 @@ export default function Manage_Staff() {
 
     return (
         <div class="wrapper">
-            <Header />
+            <Header/>
             <div className="row">
                 <div className="col-lg-3 col-md-6 mb-4">
                     <div className="card border-0 text-light card-shadow">

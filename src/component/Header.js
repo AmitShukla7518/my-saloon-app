@@ -318,15 +318,18 @@ export default function Header() {
                                                                 className="arrow"></span> </a>
                                                             <ul className="down_menu">
                                                                 <li>
-                                                                    <Link to="/Booking status">Manage All Booking</Link>
+                                                                    <Link to="/Manage_Booking">Manage All Booking</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Total Booking">Panding Booking</Link>
+                                                                    <Link to="/PandingBooking">Panding Booking</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to="/Total Booking">Complited Booking</Link>
+                                                                    <Link to="/ComplitedBooking">Complited Booking</Link>
                                                                 </li>
 
+                                                                <li>
+                                                                    <Link to="/CancelledBooking">Cancelled Booking</Link>
+                                                                </li>
                                                             </ul>
                                                         </li>
                                                         <li className="menu_sub">
@@ -405,7 +408,7 @@ export default function Header() {
                                                                 className="arrow"></span> </a>
                                                             <ul className="down_menu">
                                                                 <li>
-                                                                    <Link to="/Booking status">Manage Booking</Link>
+                                                                    <Link to="/Manage_Booking">Manage Booking</Link>
                                                                 </li>
                                                                 <li>
                                                                     <Link to="/Total Booking">Complited  Booking </Link>

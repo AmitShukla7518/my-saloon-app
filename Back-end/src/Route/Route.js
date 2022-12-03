@@ -47,5 +47,17 @@ router.get("/GetInovenory",Middilware.VarifyToken,ManageInnoventry.Get_Inovo)
 //Boking Managments
 router.post("/AddBooking",ManageBooking.AddBooking)
 router.get("/GetBooing",ManageBooking.GetBookings)
+router.get("/PandingBooking",ManageBooking.PandingBooking)
+router.get("/CancelledBooking",ManageBooking.CancelledBooking)
+router.get("/ComplitedBooking",ManageBooking.ComplitedBooking)
+router.get("/SearchBooking/:key",ManageBooking.SearchBooking)
+
+
 
 module.exports = router;
+
+
+
+
+
+
